@@ -1,0 +1,485 @@
+<?php
+/**
+ * @file
+ * Custom functionality for Bazar Theme
+ */
+
+/*****CREATING BLOCK********/
+
+function bazar_theme_block_info(){
+    $blocks = array();
+
+    $blocks['add_to_cart'] = array(
+        'info' => t('Bazar Theme: Add to Cart Block'),//admin ui block name
+    );
+    $blocks['select_product'] = array(
+        'info' => t('Bazar Theme: Select Product'),//admin ui block name
+    );
+    $blocks['contact_info'] = array(
+        'info' => t('Bazar Theme: Contact Info Block'),//admin ui block name
+        'properties' => array('administrative' => TRUE),
+        'weight' => '10',
+    );
+    $blocks['contact_info2'] = array(
+        'info' => t('Bazar Theme: Contact Info Block'),//admin ui block name
+        'properties' => array('administrative' => TRUE),
+    );
+    $blocks['contact_form'] = array(
+        'info' => t('Bazar Theme: Contact Form Block'),//admin ui block name
+        'properties' => array('administrative' => TRUE),
+    );
+//    $blocks['add_to_cart3'] = array(
+//        'info' => t('Bazar Theme: Add to Cart Block3'),//admin ui block name
+//    );
+//    $blocks['add_to_cart4'] = array(
+//        'info' => t('Bazar Theme: Add to Cart Block4'),//admin ui block name
+//    );
+
+    return $blocks;
+}
+
+/**
+ * Implements hook_block_view
+ * the rendered block content and title
+ */
+function bazar_theme_block_view($delta = ''){
+    $block = array();
+
+    switch($delta){
+        case 'add_to_cart':{
+            $block['subject'] = t('Add To Cart');
+//            $block['bazar_product'] = t('Default product comes here');
+            $block['default_product_price'] = bazar_default_product(drupal_set_page_content());
+            $block['content'] = add_to_cart_block_contents($delta);
+            break;
+        }
+        case 'select_product':{
+            $block['subject'] = t('');
+//            $block['bazar_product'] = t('Default product comes here');
+//            $block['default_product_price'] = bazar_default_product(drupal_set_page_content());
+            $block['content'] = select_product_contents($delta);
+            break;
+        }
+        case 'contact_info':{
+            $block['subject'] = t('');
+            $block['content'] = build_contact($delta);
+            break;
+        }
+        case 'contact_info2':{
+            $block['subject'] = t('');
+            $block['content'] = build_contact($delta);
+            break;
+        }
+        case 'contact_form':{
+            $block['subject'] = t('');
+            $block['content'] = build_contact($delta);
+            break;
+        }
+        case 'add_to_cart2':{
+            $line_item_loaded = commerce_line_item_load(2);
+            $context = array(
+                'entity_type' => "node",
+                'view_mode' => "node_full",
+                'display' => "full",
+                'language' => "en",
+                'entity_id' => "19",
+                'class_prefix' => "node-19"
+            );
+            $show_quantity = false;
+            $line_item = array(
+                'type' => 'product',
+                'order_id' => 0,
+                'quantity' => '1',
+                'line_item_id' => null,
+                'line_item_label' => 'coffe theme Basic',
+                'created' => '',
+                'changed' => '',
+                'is_new' => true,
+                'commerce_product' => array(
+                  'und' => array(
+                    '0' => array(
+                        'product_id' => "2"
+                    )
+                  ),
+                ),
+                'commerce_display_path' => array(
+                   'und' => array(
+                       '0' => array(
+                           'value' => ''
+                       )
+                   )
+                ),
+                'commerce_unit_price' => array(
+                    'und' => array(
+                        '0' => array(
+                            'amount' => '5000',
+                            'currency_code' => 'USD',
+                            'data' => array(
+                                'components' => array(
+                                    '0' => array(
+                                        'name' => 'base_price',
+                                        'price' => array(
+                                            'amount' => '5000',
+                                            'currency_code' => "USD",
+                                            'data' => array(
+                                                'components' => array()
+                                            ),
+                                        ),
+                                        'include' => true
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+
+            $line_item_obj = (object)$line_item;
+            $line_item_obj->data = array(
+                'context' => array(
+                    'product_ids' => "entity",
+                    'add_to_cart_combine' => true,
+                    'show_single_product_attributes' => false,
+                    'entity' => array(
+                        'entity_type' => 'node',
+                        'entity_id' => '19',
+                        'product_reference_field_name' => 'field_product'
+                    )
+                )
+            );
+//            module_load_include('module', 'commerce_cart');
+            $block['subject'] = t('Add To Cart Block 2');
+            $block['bazar_product'] = t('Default product comes here');
+            $block['default_product_price'] = bazar_default_product(drupal_set_page_content());
+//            $block['content'] = add_to_cart_block_contents($delta);
+//            $block['content'] = drupal_get_form('add_to_cart_form');
+
+            $product_1 = commerce_product_load(2);
+                // Create a new product line item for it.
+            $line_item_1 = commerce_product_line_item_new($product_1, 1);
+
+            $block['content'] = drupal_get_form('commerce_cart_add_to_cart_form', $line_item_obj, $show_quantity, $context );
+//            $block['content'] .= add_to_cart_block_contents($delta);
+
+            break;
+        }
+        case 'add_to_cart3':{
+            $block['subject'] = t('Add To Cart3');
+//            $block['bazar_product'] = t('Default product comes here');
+//            $block['default_product_price'] = bazar_default_product(drupal_set_page_content());
+            $block['content'] = add_to_cart_block_contents($delta);
+            break;
+        }
+        case 'add_to_cart4':{
+            $block['subject'] = t('add_to_cart4');
+//            $block['bazar_product'] = t('Default product comes here');
+//            $block['default_product_price'] = bazar_default_product(drupal_set_page_content());
+            $block['content'] = add_to_cart_block_contents($delta);
+
+            break;
+        }
+    }
+
+    return $block;
+}
+
+function build_contact($delta){
+    $output = '';
+    switch($delta){
+        case 'contact_info2':
+        case 'contact_info':
+            $output .= theme_render_template(drupal_get_path('module', 'bazar_theme').'/inc/block--bazar-theme--contact-info.tpl.php', null);
+//            $output .= "<div>contact info block from module</div>";
+            break;
+        case 'contact_form':
+            $output .= theme_render_template(drupal_get_path('module', 'bazar_theme').'/inc/block--bazar-theme--contact-form.tpl.php', null);
+//            $output .= "<div>contact form block from module</div>";
+            break;
+
+    }
+    return $output;
+}
+
+function add_to_cart_form($form, &$form_submit){
+    $form['color'] = array(
+        '#title' => t('Favorite color'),
+        '#type' => 'textfield',
+        '#required' => TRUE,
+        '#description' => t('What is your favorite color? Blue? No, wait-'),
+    );
+    $form['submit'] = array(
+        '#type' => 'submit',
+        '#value' => 'Submit',
+    );
+    return $form;
+}
+
+function add_to_cart_block_form($form, &$form_state, $line_item, $show_quantity = FALSE, $context = array()){
+
+    $form = commerce_cart_add_to_cart_form($form, $form_state, $line_item, $show_quantity = FALSE, $context = array());
+
+    // replace the default commerce form id with our custom block ID. This is necessary for AJAX to function while both forms are on the page
+    $form['#attributes']['class'][1] = drupal_html_class('bazar_add_to_cart_block_form');
+    unset($form['attributes']);
+    return $form;
+}
+
+function bazar_default_product($content){
+    $content_type_id = max(array_keys($content['nodes']));
+    $default_product_price = $content['nodes'][$content_type_id]['product:commerce_price'][0]['#markup'];
+    return $default_product_price;
+}
+
+function bazar_theme_preprocess_block(&$variables) {
+    if ($variables['block']->module == 'bazar_theme') {
+        //$variables['bazar_var_exposed'] = 'true';
+        //$variables['sys_main_content_preprocess'] = drupal_set_page_content();
+        //$variables['elements']['bazar_var_exposed'] = 'true2';
+    }
+    //$variables['bazar_var_exposed_outside'] = 'true';
+    //$variables['elements']['bazar_var_exposed_outside'] = 'true2';
+}
+
+
+function select_product_contents($delta){
+    $node_content = drupal_set_page_content();
+    $content_type_id = max(array_keys($node_content['nodes']));
+//    $line_item_loaded = commerce_line_item_load( $node_content['nodes'][$content_type_id]);
+
+    //retreve render array of add-to-cart form
+    $select_product_form = $node_content['nodes'][$content_type_id]['field_product'][0];
+
+    //remove buttons
+//    unset($select_product_form['submit']);
+//    $select_product_form['submit']['#type'] = 'hidden';
+
+    //reset class for the block to our custom so that Ajax calls doesn't intereffect each other
+    $select_product_form['#attributes']['class'][1] = drupal_html_class('select_product_form');
+    return drupal_render($select_product_form);
+//    return '<div>Here comes select product widget</div>';
+}
+
+/**
+ * Add To Cart Block contents
+ *
+ *@param string $delta
+ *   the block ID
+ *
+ * @return string
+ *   HTML output.
+ */
+
+function add_to_cart_block_contents($delta){
+    $output = '';
+    switch($delta){
+        case 'add_to_cart':{
+
+            //module_load_include('inc', 'commerce.rules');
+//            ob_start();
+//            include './'. base_path().path_to_theme() .'/templates/section--block--add-to-cart.php';
+//            $result_add_to_cart = ob_get_contents();
+//            ob_end_clean();
+              $output .= generate_add_to_cart_block();
+//            $output .= '<h3>Test Manual Form</h3><div> Add To Cart Content</div>';
+            break;
+        }
+        case 'add_to_cart2':{
+
+            //module_load_include('inc', 'commerce.rules');
+//            ob_start();
+//            include './'. base_path().path_to_theme() .'/templates/section--block--add-to-cart.php';
+//            $result_add_to_cart = ob_get_contents();
+//            ob_end_clean();
+            $output .= '<div> Add To Cart Content Block Two</div>';
+            break;
+        }
+        case 'add_to_cart3':{
+            ob_start();
+            include './'. base_path().path_to_theme() .'/templates/section--block--add-to-cart2.php';
+            $result_add_to_cart = ob_get_contents();
+            ob_end_clean();
+            $output .= $result_add_to_cart;
+            break;
+        }
+        case 'add_to_cart4':{
+            //$output .= '<div> Add To Cart Content Block four</div>';
+            $line_item_loaded = commerce_line_item_load(2);
+            $context = array(
+                'entity_type' => "node",
+                'view_mode' => "node_full",
+                'display' => "full",
+                'language' => "en",
+                'entity_id' => "19",
+                'class_prefix' => "node-19"
+            );
+            $show_quantity = false;
+            $line_item = array(
+                'type' => 'product',
+                'order_id' => 0,
+                'quantity' => '1',
+                'line_item_id' => null,
+                'line_item_label' => 'coffe theme Basic',
+                'created' => '',
+                'changed' => '',
+                'is_new' => true,
+                'commerce_product' => array(
+                    'und' => array(
+                        '0' => array(
+                            'product_id' => "2"
+                        )
+                    ),
+                ),
+                'commerce_display_path' => array(
+                    'und' => array(
+                        '0' => array(
+                            'value' => ''
+                        )
+                    )
+                ),
+                'commerce_unit_price' => array(
+                    'und' => array(
+                        '0' => array(
+                            'amount' => '5000',
+                            'currency_code' => 'USD',
+                            'data' => array(
+                                'components' => array(
+                                    '0' => array(
+                                        'name' => 'base_price',
+                                        'price' => array(
+                                            'amount' => '5000',
+                                            'currency_code' => "USD",
+                                            'data' => array(
+                                                'components' => array()
+                                            ),
+                                        ),
+                                        'include' => true
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+
+            $line_item_obj = (object)$line_item;
+            $line_item_obj->data = array(
+                'context' => array(
+                    'product_ids' => "entity",
+                    'add_to_cart_combine' => true,
+                    'show_single_product_attributes' => false,
+                    'entity' => array(
+                        'entity_type' => 'node',
+                        'entity_id' => '19',
+                        'product_reference_field_name' => 'field_product'
+                    )
+                )
+            );
+            $output .= drupal_render(drupal_get_form('add_to_cart_block_form', $line_item_obj, $show_quantity, $context));
+//            $block['content'] = drupal_get_form('commerce_cart_add_to_cart_form', $line_item_obj, $show_quantity, $context );
+
+            break;
+        }
+    }
+    return $output;
+}
+
+function generate_add_to_cart_block(){
+
+    $node_content = drupal_set_page_content();
+    $content_type_id = max(array_keys($node_content['nodes']));
+//    $line_item_loaded = commerce_line_item_load( $node_content['nodes'][$content_type_id]);
+
+    //retreve render array of add-to-cart form
+    $add_to_cart_form = $node_content['nodes'][$content_type_id]['field_product'][0];
+
+    //remove attributes
+    unset($add_to_cart_form['attributes']);
+    //reset class for the block to our custom so that Ajax calls doesn't intereffect each other
+    $add_to_cart_form['#attributes']['class'][1] = drupal_html_class('bazar_add_to_cart_block_form');
+    return drupal_render($add_to_cart_form);
+}
+
+function bazar_theme_form_alter(&$form, &$form_state, $form_id) {
+//var_dump('got alert');
+    $pos = strpos($form_id, 'commerce_cart_add_to_cart_form');
+    if($pos !== false){
+
+//        $form['attributes']['field_template_type']['#ajax']['callback'] = 'bazar_add_to_cart_block_refresh';
+//        $form['attributes']['field_template_color']['#ajax']['callback'] = 'bazar_ad_to_cart_block_refresh';
+    }
+    switch($form_id){
+        case 'add_to_cart_block_form':{
+              //var_dump('in add to cart');
+//            $form['#form_id'] = 'commerce_cart_add_to_cart_form';
+//            $form['#id'] = 'commerce_cart_add_to_cart_form';
+//            $form['form_id']['#value'] = 'commerce_cart_add_to_cart_form';
+//            $form['form_id']['#id'] = 'edit-commerce_cart_add_to_cart_form';
+//            $form['form_token']['#id'] = 'edit-commerce_cart_add_to_cart_form';
+//
+//            $form['#validate'][] = 'commerce_cart_add_to_cart_form_validate';
+//            $form['#submit'] = 'commerce_cart_add_to_cart_form_submit';
+//              $form['attributes']['field_template_type']['#type'] = 'hidden';
+//              $form['attributes']['field_template_color']['#type'] = 'hidden';
+//              unset($form['attributes']['field_template_color']['#ajax']);
+//              unset($form['attributes']['field_template_type']['#ajax']);
+                //remove custom css class to the form so the ajax doesn't replace the block form content
+                //instead replaces the default node form
+                //unset($form['#attributes']['class'][1]);
+
+                //remove the select attributes from the block add to cart form
+//                unset($form['attributes']['field_template_type']);
+//                unset($form['attributes']['field_template_color']);
+            //unset($form['attributes']);
+
+            break;
+        }
+//        case 'commerce_cart_add_to_cart_form':{
+//            $form['attributes']['field_template_type']['#ajax'][] = 'bazar_add_to_cart_block_referesh';
+//            $form['attributes']['field_template_color']['#ajax'][] = 'bazar_add_to_cart_block_referesh';
+//            break;
+//        }
+
+    }
+}
+
+
+function bazar_theme_commerce_cart_attributes_refresh_alter(&$commands, $form, $form_state){
+//    $temp = $commands[0]['data'];
+//    $temp2 = drupal_render(drupal_get_form('add_to_cart_block_form', $form_state['line_item'], false, $form_state['context']));
+    //$temp2 = drupal_render(drupal_get_form('add_to_cart_block_form', $form_state['line_item'], false, $form_state['context']));
+//    unset($form_state['complete form']['#attributes']['class'][1]);
+//    unset($form_state['complete form']['attributes']['field_template_type']);
+//    unset($form_state['complete form']['attributes']['field_template_color']);
+    unset($form_state['complete form']['attributes']);
+    $default_product = $form_state['default_product'];
+    $form_state['complete form']['#attributes']['class'][1] = drupal_html_class('bazar_add_to_cart_block_form');
+    $add_to_cart_block_form = drupal_render($form_state['complete form']);
+//    $commands[] = ajax_command_replace('.bazar-add-to-cart-block-form', $temp);
+    $commands[] = ajax_command_replace('.bazar-add-to-cart-block-form', $add_to_cart_block_form);
+   $prod_price = substr($default_product->commerce_price[LANGUAGE_NONE][0]['amount'],0,-2).'.'.substr($form_state['default_product']->commerce_price[LANGUAGE_NONE][0]['amount'],-2);
+
+    $prod_default = array();
+    if($default_product->field_mobile_support[LANGUAGE_NONE][0]['taxonomy_term']->name == 'Responsive'){
+        $prod_default['mobile_support'] = 'yes';
+    }else{
+        $prod_default['mobile_support'] = 'no';
+    }
+
+    $prod_default['design_framework'] = $default_product->field_design_framework[LANGUAGE_NONE][0]['taxonomy_term']->name;
+    $prod_default['description'] = $default_product->field_description[LANGUAGE_NONE][0]['value'];
+
+    $prod_default['category']=array();
+    $output_category ='';
+    foreach($default_product->field_category[LANGUAGE_NONE] as $key=>$val){
+        $output_category .= '<li><a href="#" rel="tag">'.$val['taxonomy_term']->name.'</a></li>';
+    }
+
+
+    $commands[] = ajax_command_replace('.product-final-price', '<span class="amount product-final-price">$'.$prod_price.'</span>');
+    $commands[] = ajax_command_replace('.mobile-support', '<span class="mobile-support"><a href="#" rel="tag">'.$prod_default['mobile_support'].'</a></span>');
+    $commands[] = ajax_command_replace('.prod-design-framework', '<span class="prod-design-framework"><a href="#" rel="tag">'.$prod_default['design_framework'].'</a></span>');
+    $commands[] = ajax_command_replace('.prod-cat-refresh', '<ul class="unstyled prod-cat-refresh">'.$output_category.'</ul>');
+    $commands[] = ajax_command_replace('.description-refresh', '<span class="description-refresh">'.$prod_default['description'].'</span>');
+//    $commands[] = ajax_command_replace('.bazar-add-to-cart-block-form', '<div>got here</div>');
+
+}

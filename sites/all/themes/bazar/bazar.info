@@ -1,0 +1,58 @@
+name = bazar
+description = online store for drupal templates
+version = 0.1
+core = 7.x
+base theme = bootstrap
+engine = phptemplate
+
+settings[bazar_background] = RED
+
+regions[navigation]     = 'Navigation'
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[sidebar_main] = 'Main Sidebar'
+regions[sidebar_contact] = 'Contact Sidebar'
+regions[template_designs] = 'Template Designs'
+regions[widgets] = 'Widgets'
+regions[hotel_designs] = 'Hotel Designs'
+regions[personal_designs] = 'Personal Designs'
+regions[commerce_designs] = 'Commerce Designs'
+regions[landing_designs] = 'Landing Page Designs'
+regions[business_designs] = 'Business Designs'
+regions[hotel_and_bedbreakfast] = 'Three Hotel Designs'
+regions[personal_creative] = 'Three Personal Designs'
+regions[commerce_retail] = 'Three Commerce Designs'
+regions[landing_page_designs] = 'Three Landing Page Designs'
+regions[business_corporate] = 'Three Business Designs'
+regions[add_to_cart] = 'Add To Cart'
+regions[select_product_form] = 'Select Product Form'
+regions[cart_in_header] = 'Cart In Header'
+regions[driver_configurations] = 'Driver Configurations'
+
+;stylesheets[all][] = css/reset-bootstrap.css
+;stylesheets[all][] = css/language-selector.css
+;stylesheets[all][] = css/style.css
+;stylesheets[all][] = css/thickbox/thickbox.css
+;stylesheets[all][] = css/custom.css
+
+
+; JS
+;scripts[] = js/google-tracking.js
+;scripts[] = js/lib/underscore-min.js
+;scripts[] = js/lib/backbone-min.js
+;scripts[] = js/lib/bootstrap.min.js
+;scripts[] = js/lib/handlebars.runtime.js
+;scripts[] = js/lib/handlebars.runtime.js
+;scripts[] = js/comment-reply.min.js
+;scripts[] = js/jquery/jquery.cookie.js
+;scripts[] = js/colorpicker.js
+;scripts[] = js/sitepress.js
+
+
+settings[toggle_name] = 0
+settings[toggle_search] = 1
+settings[toggle_favicon] = 0

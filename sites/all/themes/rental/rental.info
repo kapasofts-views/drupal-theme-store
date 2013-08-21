@@ -1,0 +1,42 @@
+name = rental
+description = rental manager theme
+version = 0.1
+core = 7.x
+base theme = bootstrap
+
+regions[navigation]     = 'Navigation'
+regions[header]         = 'Top Bar'
+regions[highlighted]    = 'Highlighted'
+regions[help]           = 'Help'
+regions[content]        = 'Content'
+regions[sidebar_first]  = 'Primary'
+regions[sidebar_second] = 'Secondary'
+regions[property_menu] = 'Property Menu'
+regions[header_logo]    = 'Header Logo'
+regions[other_menu]          = 'Other Menu'
+regions[leave_testimonial]          = 'Leave Testimonial'
+regions[unit_inquiry]          = 'Unit Inquiry'
+regions[diary_list_front] = "Diary Front Page"
+regions[article_menu] = "Article Menu"
+
+stylesheets[all][] = css/bootstrap.css
+stylesheets[all][] = css/bootstrap-responsive.css
+stylesheets[all][] = css/styles.css
+stylesheets[all][] = css/skins/orange.css
+stylesheets[all][] = css/custom.css
+
+
+; JS
+scripts[] = js/google-tracking.js
+scripts[] = js/lib/underscore-min.js
+scripts[] = js/lib/backbone-min.js
+;scripts[] = js/lib/bootstrap.min.js
+scripts[] = js/lib/handlebars.runtime.js
+scripts[] = js/lib/handlebars.runtime.js
+scripts[] = js/convertix/lightbox.js
+scripts[] = js/convertix/main.js
+
+
+settings[toggle_name] = 0
+settings[toggle_search] = 1
+settings[toggle_favicon] = 0
