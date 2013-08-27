@@ -76,10 +76,10 @@
 
         <!-- START LOGO -->
         <div id="logo" class="group">
-            <a id="textual" href="/" title="DRUUP STORE">
-                Druup <span class="title-highlight">STORE</span></a>
+            <a id="textual" href="/" title="Design Square">
+                Designs <span class="title-highlight">Square</span></a>
 
-            <p id='tagline'>beatify while empower drupal sites</p>
+            <p id='tagline'>Inspiration Designs. Practical Widgets</p>
         </div>
         <!-- END LOGO -->
         <div id="header-cart-search">
@@ -117,7 +117,7 @@
                     <?php echo '<img src="'.base_path().path_to_theme().'/img/widget221.png" alt="" width="16" height="43" />';?>
                 </div>
                 <h3>CUSTOMER SUPPORT</h3>
-                <p>+ 39 097 372659</p></div><div id="text-2" class="widget-3 widget-last widget widget_text">
+                <p>+ 1 651 3346333</p></div><div id="text-2" class="widget-3 widget-last widget widget_text">
                 <div class="textwidget">LOVE IS SHARING &nbsp; &nbsp; &nbsp;
                     <div class="socials-default-small facebook-small default">
                         <a href="# " class="socials-default-small default facebook" >facebook</a>
@@ -154,7 +154,7 @@
         <ul id="menu-menu" class="level-1">
             <?php
             print '<li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['front'].' "><a href="/">HOME</a></li>';
-            print '<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['all_designs'].' "><a href="/drupal-templates-for-sale">DESIGN TEMPLATES</a></li>';
+            print '<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['all_designs'].' "><a href="/drupal-templates-for-sale">DESIGN THEMES</a></li>';
             print '<li id="menu-item-579" class="menu-item menu-item-type-custom menu-item-object-custom '.$menu_selector['all_widgets'].' "><a href="/web-widgets-for-sale">WIDGETS</a></li>';
             print '<li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['contact'].' "><a href="/contact-us">CONTACT</a></li>';
 ?>

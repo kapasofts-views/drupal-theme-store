@@ -121,6 +121,7 @@ function driver_config_content($delta){
             $drive_config .=  '</script>'."\n";
             $drive_config .=  '<script src="http://'.variable_get('kapasoft_driver_url').':'.variable_get('kapasoft_driver_port').'/socket.io/socket.io.js"></script>'."\n";
             $drive_config .=  '<script>var socket = io.connect(MIN_CONFIG.getDriverUrl());</script>'."\n";
+
             break;
         }
     }

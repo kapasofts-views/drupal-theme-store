@@ -51,3 +51,171 @@ body {
     padding-top: 0px;
     margin-top: 0px;
 }
+
+/****Contact Form Styling*****/
+#app-contact .fix-email{
+     font-family: 'Play';
+     font-size: 12px;
+     font-weight:400;
+     font-style: normal;
+     color: #A09B9B;
+     line-height: 15px;
+     vertical-align: top;
+     /*width: 200px;*/
+     height: 43px;
+     margin: 0px;
+     padding-top: 4px;
+     padding-right: 6px;
+     padding-bottom: 4px;
+     padding-left: 10px;
+     box-shadow: none;
+     border-top-left-radius:0px;
+     border-top-right-radius:0px;
+     border-bottom-left-radius:0px;
+     border-bottom-right-radius:0px;
+     vertical-align: middle;
+     text-indent: 0px;
+ }
+
+#app-contact .fix-input{
+    font-family: 'Play';
+    font-size: 12px;
+    font-weight:400;
+    font-style: normal;
+    color: #A09B9B;
+    line-height: 15px;
+    vertical-align: top;
+    /*width: 200px;*/
+    /*height: 43px;*/
+    /*margin: 0px;*/
+    /*padding-top: 4px;*/
+    /*padding-right: 6px;*/
+    /*padding-bottom: 4px;*/
+    /*padding-left: 10px;*/
+    box-shadow: none;
+    border-top-left-radius:0px;
+    border-top-right-radius:0px;
+    border-bottom-left-radius:0px;
+    border-bottom-right-radius:0px;
+    vertical-align: middle;
+    text-indent: 0px;
+}
+
+#app-contact .sizing-name{
+    height: 43px;
+}
+
+#app-contact .fix-wrap{
+    white-space: nowrap;
+    position: relative;
+    padding-left: 10px !important;
+}
+
+#app-contact .fix-buttom{
+    font-family: 'Oswald';
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+    line-height: 19px;
+    vertical-align: middle;
+    background-color: #C27D05;
+    background-image: none;
+    background-repeat: repeat;
+    background-origin: padding-box;
+    padding-top: 4px;
+    padding-right: 11px;
+    padding-left: 11px;
+    padding-bottom: 4px;
+    display: block;
+    float: right;
+    clear: both;
+    border-color:white;
+    color:white;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: stretch stretch;
+    border-image-slice: 100% 100% 100% 100%;
+    border-image-width: 1 1 1 1;
+    border-image-source: none;
+
+}
+
+/*******Demo PopUP*******/
+
+.demoModal{
+    margin-top:1px;
+    left:22%;
+    width:1400px;
+    height: 2000px;
+    position: absolute;
+    /*background-color: transparent;*/
+}
+
+/*.close{*/
+    /*float: left;*/
+/*}*/
+.modal-body-demo{
+    height:100%;
+    max-height: 2000px;
+}
+
+iframe.hide-demo-header{
+    position: relative;
+    top:-70px;
+}
+
+h3#myModalLabel{
+    margin-left:40px;
+    text-transform: uppercase;
+}
+
+/*****Package Description*****/
+/*.product-description .icon-info-sign {*/
+    /*background-image: url("../img/glyphicons-halflings.png");*/
+/*}*/
+
+.product-description [class^="icon-"],.product-description [class*=" icon-"] {
+    background-image: url("../img/glyphicons-halflings.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    margin-top: 1px;
+    vertical-align: text-top;
+    width: 14px;
+}
+
+.product-description .icon-info-sign:before {
+    content: "";
+}
+
+.product-description .icon-info-sign {
+    background-position: -120px -96px;
+}
+
+#description-info-sign{
+    position: relative;
+    top:15px;
+    left:90px;
+    z-index: 100;
+}
+
+
+.package-modal{
+    margin-top:1px;
+    /*top:10%;*/
+    /*left:80%;*/
+    /*width:400px;*/
+    /*height: 200px;*/
+    position: absolute;
+    /*background-color: transparent;*/
+}
+
+/*.close{*/
+/*float: left;*/
+/*}*/
+.modal-body-package{
+    /*height:100%;*/
+    /*max-height: 2000px;*/
+}

@@ -129,45 +129,9 @@
 
 
       <div class="panel entry-content" id="tab-info">
-          <form id="contact-form-ask-info-product" class="contact-form row-fluid" method="post" action="" enctype="multipart/form-data">
-
-              <div class="usermessagea"></div>
-              <fieldset>
-
-                  <ul>
-
-                      <li class="textarea-field with-icon span9">
-                          <div class="input-prepend"><span class="add-on"><i class="icon-contact-text"></i></span><textarea name="yit_contact[enquiry]" id="enquiry-ask-info-product" rows="8" cols="30" class="with-icon required" placeholder="Enquiry"></textarea></div>
-                          <div class="msg-error"></div><div class="clear"></div>
-                      </li>
-                      <li class="text-field with-icon span3">
-                          <div class="input-prepend"><span class="add-on"><i class="icon-contact-name"></i></span><input type="text" name="yit_contact[name]" id="name-ask-info-product" class="with-icon required" value="" placeholder="Name" /></div>
-                          <div class="msg-error"></div><div class="clear"></div>
-                      </li>
-                      <li class="text-field with-icon span3">
-                          <div class="input-prepend"><span class="add-on"><i class="icon-contact-email"></i></span><input type="text" name="yit_contact[email]" id="email-ask-info-product" class="with-icon required email-validate" value="" placeholder="Email" /></div>
-                          <div class="msg-error"></div><div class="clear"></div>
-                      </li>
-                      <li class="text-field with-icon span3">
-                          <div class="input-prepend"><span class="add-on"><i class="icon-contact-phone"></i></span><input type="text" name="yit_contact[phone]" id="phone-ask-info-product" class="with-icon" value="" placeholder="Phone" /></div>
-                          <div class="msg-error"></div><div class="clear"></div>
-                      </li>
-                      <li class="submit-button span9">
-                          <input type="text" name="yit_bot" id="yit_bot" />
-                          <input type="hidden" name="yit_action" value="sendemail" id="yit_action" />
-                          <input type="hidden" name="yit_referer" value="http://demo.yithemes.com/bazar/shop/walking-shoes/" />
-                          <input type="hidden" name="id_form" value="575" />
-                          <input type="hidden" name="yit_contact[sku]" value="" />				<input type="hidden" name="yit_contact[product_id]" value="506" />				<input type="submit" name="yit_sendemail" value="Send Message" class="sendmail alignright" />				<div class="clear"></div>			</li>
-                  </ul>
-
-              </fieldset>
-              <div class="contact-form-error-messages"><div class="contact-form-error-enquiry contact-form-error">* Insert a message</div>
-                  <div class="contact-form-error-name contact-form-error">* Insert your name</div>
-                  <div class="contact-form-error-email contact-form-error">* Insert your email address</div>
-              </div>
-          </form>
-
-          <script type="text/javascript" src="http://demo.yithemes.com/bazar/wp-content/themes/bazar/theme/assets/js/contact.js"></script>
+          <?php
+          print render($region['product_inquiry_horizontal']);
+          ?>
       </div>
 
 
@@ -196,8 +160,6 @@
                                   </p>
                               </div>
                               <input type="hidden" name="icl_comment_language" value="en" />
-
-
                           </form>
                       </div><!-- #respond -->
                   </div></div><div class="clear"></div></div>

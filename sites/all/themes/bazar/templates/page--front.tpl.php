@@ -1,34 +1,35 @@
 <!-- BEGIN #slider -->
-<div id="slider-elastic-0" class="slider slider-elastic elastic ei-slider container" style="">
-    <div class="ei-slider-loading">Loading</div>
-    <ul class="ei-slider-large">
-
-
-        <li class="first slide-1 slide align-">
-            <?php print '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/Senza-titolo-2.jpg" class="attachment-full" alt="Senza-titolo-2" />';?>
-
-        </li>
-
-        <li class="slide-2 slide align-">
-            <?php echo '<img width="1170" height="339" src="'.path_to_theme() .'/img/slider/42.jpg" class="attachment-full" alt="42" />';?>
-
-        </li>
-
-        <li class="last slide-3 slide align-">
-            <?php echo '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/51.jpg" class="attachment-full" alt="51" />';?>
-
-        </li>
-
-    </ul><!-- ei-slider-large -->
-    <ul class="ei-slider-thumbs">
-        <li class="ei-slider-element">Current</li>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/Senza-titolo-2-150x59.jpg" alt=" - " /></li>';?>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/42-150x59.jpg" alt=" - " /></li>';?>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/51-150x59.jpg" alt=" - " /></li>';?>
-    </ul><!-- ei-slider-thumbs -->
-
-    <div class="shadow"></div>
-</div><!-- ei-slider -->
+<!--<div id="slider-elastic-0" class="slider slider-elastic elastic ei-slider container" style="">-->
+<!--    <div class="ei-slider-loading">Loading</div>-->
+<!--    <ul class="ei-slider-large">-->
+<!---->
+<!---->
+<!--        <li class="first slide-1 slide align-">-->
+<!--            --><?php //print '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/Senza-titolo-2.jpg" class="attachment-full" alt="Senza-titolo-2" />';?>
+<!---->
+<!--        </li>-->
+<!---->
+<!--        <li class="slide-2 slide align-">-->
+<!--            --><?php //echo '<img width="1170" height="339" src="'.path_to_theme() .'/img/slider/42.jpg" class="attachment-full" alt="42" />';?>
+<!---->
+<!--        </li>-->
+<!---->
+<!--        <li class="last slide-3 slide align-">-->
+<!--            --><?php //echo '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/51.jpg" class="attachment-full" alt="51" />';?>
+<!---->
+<!--        </li>-->
+<!---->
+<!--    </ul><!-- ei-slider-large -->
+<!--    <ul class="ei-slider-thumbs">-->
+<!--        <li class="ei-slider-element">Current</li>-->
+<!--        --><?php //echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/Senza-titolo-2-150x59.jpg" alt=" - " /></li>';?>
+<!--        --><?php //echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/42-150x59.jpg" alt=" - " /></li>';?>
+<!--        --><?php //echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/51-150x59.jpg" alt=" - " /></li>';?>
+<!--    </ul><!-- ei-slider-thumbs -->
+<!---->
+<!--    <div class="shadow"></div>-->
+<!--</div>-->
+<!-- ei-slider -->
 <!-- END #slider -->
 
 <script type="text/javascript">
@@ -55,7 +56,7 @@
 <div id="post-696" class="post-696 page type-page status-publish hentry group instock">
     <div class="products-slider-wrapper">
         <div class="products-slider" data-items="3">
-            <h4>DESIGN TEMPLATES</h4>
+            <h4>DESIGN THEMES</h4>
             <?php
             print render($page['template_designs']);
             ?>
@@ -106,18 +107,18 @@
     <div class="testimonials-flexslider">
         <ul class="slides">
             <li>
-                <blockquote><p><a href="#">[Druup] surprising sense of taste who can take notions such as "noise and photographic textures" and "deep colour with contrasts" and come up with a firm starting place for a website. Changing minute details in the site is never a problem.</a></p></blockquote>
+                <blockquote><p><a href="#">[DesignsSquare] surprising sense of taste who can take notions such as "noise and photographic textures" and "deep colour with contrasts" and come up with a firm starting place for a website. Changing minute details in the site is never a problem.</a></p></blockquote>
                 <p class="meta"><strong><a href="#" class="name">Melissa Cathcart, L.Ac.</a></strong>  - <a href="#">Barefoot Doctor Community Healthcare</a></p>
             </li>
 
 
             <li>
-                <blockquote><p><a href="#">[Druup] design met all of our visual needs, was easy to maintain, and could be easily modified or changed by our people.[...] everyone now points to our site with pride.                        </a></p></blockquote>
+                <blockquote><p><a href="#">[DesignsSquare] design met all of our visual needs, was easy to maintain, and could be easily modified or changed by our people.[...] everyone now points to our site with pride.                        </a></p></blockquote>
                 <p class="meta"><strong><a href="#" class="name">Gerold Luss, President of Church Board</a></strong>  - <a href="#">Lat. Ev. Lutheran Church of Minneapolis & St. Paul </a></p>
             </li>
 
             <li>
-                <blockquote><p><a href="#">[Druup] creative designs were so much better than the templates out there we used before. We wanted our new website to look class of its own and now it does. Thank you </a></p></blockquote>
+                <blockquote><p><a href="#">[DesignsSquare] creative designs were so much better than the templates out there we used before. We wanted our new website to look class of its own and now it does. Thank you </a></p></blockquote>
                 <p class="meta"><strong><a href="http://lta-insurance.com/" class="name">Lawrence Tan</a></strong>  - <a href="http://lta-insurance.com/">LTA Insurance</a></p>
             </li>
         </ul>

@@ -31,7 +31,28 @@
         <div class="border"></div>
 
         <div class="buttons buttons_3 group">
-            <div class="yith-wcwl-add-to-wishlist"><div class="yith-wcwl-add-button"><a href="http://demo.yithemes.com/bazar/wp-content/themes/bazar/theme/plugins/yith_wishlist/yith-wcwl-ajax.php?action=add_to_wishlist&add_to_wishlist=506" data-product-id="506" data-product-type="simple" class="add_to_wishlist" >Wishlist</a><img src="http://demo.yithemes.com/bazar/wp-admin/images/wpspin_light.gif" class="ajax-loading" id="add-items-ajax-loading" alt="" style="visibility:hidden" width="16" height="16" /></div><div class="yith-wcwl-wishlistaddedbrowse" style="display:none;"><span class="feedback">Product added!</span> <a href="http://demo.yithemes.com/bazar/?page_id=387">View Wishlist</a></div><div class="yith-wcwl-wishlistexistsbrowse" style="display:none"><span class="feedback">The product is already in the wishlist!</span> <a href="http://demo.yithemes.com/bazar/?page_id=387">View Wishlist</a></div><div style="clear:both"></div><div class="yith-wcwl-wishlistaddresponse"></div></div><div class="clear"></div>            <script type="text/javascript">
+            <div class="yith-wcwl-add-to-wishlist">
+                <div class="yith-wcwl-add-button">
+                    <a href="#" data-product-id="506" data-product-type="simple" class="add_to_wishlist" >Wishlist</a>
+                    <?php print '<img src="'.base_path().path_to_theme().'/img/wpspin_light.gif" class="ajax-loading" id="add-items-ajax-loading" alt="" style="visibility:hidden" width="16" height="16" />';?>
+                </div>
+                <div class="yith-wcwl-wishlistaddedbrowse" style="display:none;">
+                    <span class="feedback">Product added!</span>
+                    <a href="#">View Wishlist</a>
+                </div>
+                <div class="yith-wcwl-wishlistexistsbrowse" style="display:none">
+                    <span class="feedback">The product is already in the wishlist!</span>
+                    <a href="#">View Wishlist</a>
+                </div>
+                <div style="clear:both">
+
+                </div>
+                <div class="yith-wcwl-wishlistaddresponse">
+
+                </div>
+            </div>
+            <div class="clear"></div>
+            <script type="text/javascript">
                 if( !jQuery( '#yith-wcwl-popup-message' ).length ) {
                     jQuery( 'body' ).prepend(
                         '<div id="yith-wcwl-popup-message" style="display:none;">' +

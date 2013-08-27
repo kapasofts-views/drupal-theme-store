@@ -7,4 +7,4 @@ engine = phptemplate
 
 
 
-
+;scripts[] = js/ajax_commands.js

@@ -45,7 +45,7 @@
             <div class="products-slider" data-items="3">
                 <h4>HOTEL - BED & BREAKFAST</h4>
                 <?php
-                print render($page['hotel_and_bedbreakfast']);
+                print render($page['hotel_designs']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>

@@ -13,7 +13,7 @@
 
 
                 <?php print '<a itemprop="image" href="'.$bazar_product['img-magnified']['url'].'" class="yith_magnifier_zoom" rel="thumbnails">';?>
-                <?php print '<img src="'.$bazar_product['img']['url'].'" alt="'.$bazar_product['img']['alt'].'" class="yit-image attachment-shop_single" width="462" height="392" />';?>
+                <?php print '<img src="'.$bazar_product['img']['url'].'" alt="'.$bazar_product['img']['alt'].'" class="yit-image refresh-main-img attachment-shop_single" width="462" height="392" />';?>
                 </a>
                 <?php if($bazar_product['is-on-sale']){print '<img src="'.base_path().path_to_theme() .'/img/sale.png" alt="On sale!" class="onsale yit-image" width="71" height="68" />';}?>
                 <?php if($bazar_product['is-new-product']){print '<img src="'.base_path().path_to_theme() .'/img/new-product.png" alt="New Product!" class="new-prod yit-image" width="71" height="68" />';}?>
@@ -79,7 +79,7 @@
                 <div class="border"></div>
                 <div class="border"></div>
                 <div itemprop="description" class="product-description">
-
+                    <a href="#packageModal" role="button" data-toggle="modal"><i id="description-info-sign" class="icon-info-sign"></i></a>
 <!--                    <p>Phasellus egestas, nunc non consectetur hendrerit, risus mauris cursus velit, et condimentum nisi enim in eros.</p>-->
 <!--                    <p>Nam ullamcorper neque non erat elementum vulputate. Nullam dignissim lobortis interdum.</p>-->
 <!--                    <p>Donec nisi est, tempus eget. Nam ullamcorper neque non erat elementum vulputate. Nullam dignissim lobortis interdum. Donec nisi est, tempus eget.</p>-->
@@ -96,15 +96,63 @@
                     ?>
 
                 </div>
-                <!--<div class="social">
-                    <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fdemo.yithemes.com%2Fbazar%2Fshop%2Fwalking-shoes%2F&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>
-                    <span class="st_twitter"></span><span class="st_email"></span><span class="st_sharethis" st_image="http%3A%2F%2Fdemo.yithemes.com%2Fbazar%2Ffiles%2F2013%2F01%2F0710-1024x800.jpg"></span><span class="st_plusone_button"></span>
-                </div>-->
-<!--                <script type="text/javascript">var switchTo5x=true;</script>-->
-<!--                <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>-->
-<!--                <script type="text/javascript">stLight.options({publisher:"9c5a1d2e-f6e5-40dd-a371-30228258f8ea"});</script>-->
+
+                <div id="packageModal" class="package-modal modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close pull-left" data-dismiss="modal" aria-hidden="true" >×</button>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <?php print '<h3 id="myModalLabel">'.$bazar_product['title'].'</h3>';?>
+                    </div>
+                    <div class="modal-body-package modal-body ">
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <?php print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/basic-icon.png">';?>
+                            </a>
+                            <div class="media-body">
+<!--                                <h4 class="media-heading">Basic</h4>-->
+                                The minimal to get it started. Each page is its own content type, however. It my require some html, coding skills to customize per your needs. Perfect for developers focusing on building features!
+                            </div>
+                        </div>
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <?php print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/plus-icon.png">';?>
+                            </a>
+                            <div class="media-body">
+<!--                                <h4 class="media-heading">Plus</h4>-->
+                                All design elements are contained in their own container configurable and editable by anyone, so you don't need any html or coding skills. Do your self package!
+                            </div>
+                        </div>
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <?php print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/unlimited-icon.png">';?>
+                            </a>
+                            <div class="media-body">
+<!--                                <h4 class="media-heading">Unlimited</h4>-->
+                                Sit back, relax and sip your favorite drink, while we install, configure and customize your site as you wish(up to 3h of our time). The smart choice package!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn pull-left" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
                 <div class="product_meta">
-                    <?php //print 'Type: '.$select_type_widget; ?>
+                    <!-- Button to trigger modal -->
+                    <a href="#myModal" role="button" class="button alt" data-toggle="modal">Launch Demo</a>
+                     <!-- Modal -->
+                    <div id="myModal" class="modal demoModal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header">
+                            <button type="button" class="close pull-left" data-dismiss="modal" aria-hidden="true" >×</button>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <?php print '<h3 id="myModalLabel">'.$bazar_product['title'].'</h3>';?>
+                        </div>
+                        <div class="modal-body-demo modal-body">
+                            <?php print '<iframe src="'.$bazar_product['demo_url'].'" class="'.$bazar_product['hide_demo_header'].'" height="2000" width="1400" scrolling="no" frameborder="0" seamless></iframe>';?>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn pull-left" data-dismiss="modal" aria-hidden="true">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div><!-- .summary -->
 
@@ -145,47 +193,9 @@
 
 
       <div class="panel entry-content" id="tab-info">
-          <form id="contact-form-ask-info-product" class="contact-form row-fluid" method="post" action="" enctype="multipart/form-data">
-
-              <div class="usermessagea"></div>
-              <fieldset>
-
-                  <ul>
-
-                      <li class="textarea-field with-icon span9">
-                          <div class="input-prepend"><span class="add-on"><i class="icon-contact-text"></i></span><textarea name="yit_contact[enquiry]" id="enquiry-ask-info-product" rows="8" cols="30" class="with-icon required" placeholder="Enquiry"></textarea></div>
-                          <div class="msg-error"></div><div class="clear"></div>
-                      </li>
-                      <li class="text-field with-icon span3">
-                          <div class="input-prepend"><span class="add-on"><i class="icon-contact-name"></i></span><input type="text" name="yit_contact[name]" id="name-ask-info-product" class="with-icon required" value="" placeholder="Name" /></div>
-                          <div class="msg-error"></div><div class="clear"></div>
-                      </li>
-                      <li class="text-field with-icon span3">
-                          <div class="input-prepend"><span class="add-on"><i class="icon-contact-email"></i></span><input type="text" name="yit_contact[email]" id="email-ask-info-product" class="with-icon required email-validate" value="" placeholder="Email" /></div>
-                          <div class="msg-error"></div><div class="clear"></div>
-                      </li>
-                      <li class="text-field with-icon span3">
-                          <div class="input-prepend"><span class="add-on"><i class="icon-contact-phone"></i></span><input type="text" name="yit_contact[phone]" id="phone-ask-info-product" class="with-icon" value="" placeholder="Phone" /></div>
-                          <div class="msg-error"></div><div class="clear"></div>
-                      </li>
-                      <li class="submit-button span9">
-                          <input type="text" name="yit_bot" id="yit_bot" />
-                          <input type="hidden" name="yit_action" value="sendemail" id="yit_action" />
-                          <input type="hidden" name="yit_referer" value="#" />
-                          <input type="hidden" name="id_form" value="575" />
-                          <input type="hidden" name="yit_contact[sku]" value="" />
-                          <input type="hidden" name="yit_contact[product_id]" value="506" />
-                          <input type="submit" name="yit_sendemail" value="Send Message" class="sendmail alignright" />
-                          <div class="clear"></div>
-                      </li>
-                  </ul>
-
-              </fieldset>
-              <div class="contact-form-error-messages"><div class="contact-form-error-enquiry contact-form-error">* Insert a message</div>
-                  <div class="contact-form-error-name contact-form-error">* Insert your name</div>
-                  <div class="contact-form-error-email contact-form-error">* Insert your email address</div>
-              </div>
-          </form>
+          <?php
+          print render($region['product_inquiry_horizontal']);
+          ?>
       </div>
 
 

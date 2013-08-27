@@ -28,6 +28,14 @@ function bazar_theme_block_info(){
         'info' => t('Bazar Theme: Contact Form Block'),//admin ui block name
         'properties' => array('administrative' => TRUE),
     );
+    $blocks['contact_form_horizon'] = array(
+        'info' => t('Bazar Theme: Contact Form Block Horizontal'),//admin ui block name
+        'properties' => array('administrative' => TRUE),
+    );
+    $blocks['inquiry_form_horizon'] = array(
+        'info' => t('Bazar Theme: Inquiry Form Horizontal'),//admin ui block name
+        'properties' => array('administrative' => TRUE),
+    );
 //    $blocks['add_to_cart3'] = array(
 //        'info' => t('Bazar Theme: Add to Cart Block3'),//admin ui block name
 //    );
@@ -72,7 +80,65 @@ function bazar_theme_block_view($delta = ''){
         }
         case 'contact_form':{
             $block['subject'] = t('');
-            $block['content'] = build_contact($delta);
+            $block['content'] = array(
+                '#markup' => build_contact($delta),
+                '#attached' => array(
+                    'js' => array(
+                        drupal_get_path('module', 'bazar_theme').'/js/underscore-min.js' => array(
+                            'type' => 'file',
+                            'weight' => 20,
+                        ),
+                        drupal_get_path('module', 'bazar_theme').'/js/backbone-min.js' => array(
+                            'type' => 'file',
+                            'weight' => 21,
+                        ),
+                        drupal_get_path('module', 'bazar_theme').'/js/handlebars.runtime.js' => array(
+                            'type' => 'file',
+                            'weight' => 22,
+                        ),
+                        drupal_get_path('module', 'bazar_theme').'/js/contact-config.js' => array(
+                            'type' => 'file',
+                            'weight' => 23,
+                        ),
+                        'http://kapasoft.com/repos/backbone/contact/0.0.2/contact-0.0.2.min.js' => array(
+                            'type' => 'file',
+                            'weight' => 24,
+                        ),
+                    ),
+                ),
+            );
+            break;
+        }
+        case 'inquiry_form_horizon':
+        case 'contact_form_horizon':{
+            $block['subject'] = t('');
+            $block['content'] = array(
+                '#markup' => build_contact($delta),
+                '#attached' => array(
+                    'js' => array(
+                        drupal_get_path('module', 'bazar_theme').'/js/underscore-min.js' => array(
+                            'type' => 'file',
+                            'weight' => 20,
+                        ),
+                        drupal_get_path('module', 'bazar_theme').'/js/backbone-min.js' => array(
+                            'type' => 'file',
+                            'weight' => 21,
+                        ),
+                        drupal_get_path('module', 'bazar_theme').'/js/handlebars.runtime.js' => array(
+                            'type' => 'file',
+                            'weight' => 22,
+                        ),
+                        drupal_get_path('module', 'bazar_theme').'/js/inquiry-config-horizontal.js' => array(
+                            'type' => 'file',
+                            'weight' => 23,
+                        ),
+                        'http://kapasoft.com/repos/backbone/contact/0.0.2/contact-0.0.2.min.js' => array(
+                            'type' => 'file',
+                            'weight' => 24,
+                        ),
+                    ),
+                ),
+            );
             break;
         }
         case 'add_to_cart2':{
@@ -188,12 +254,15 @@ function build_contact($delta){
     switch($delta){
         case 'contact_info2':
         case 'contact_info':
-            $output .= theme_render_template(drupal_get_path('module', 'bazar_theme').'/inc/block--bazar-theme--contact-info.tpl.php', null);
+            $output .= theme_render_template(drupal_get_path('module', 'bazar_theme').'/inc/block--bazar-theme--contact-info.tpl.php', array());
 //            $output .= "<div>contact info block from module</div>";
             break;
         case 'contact_form':
-            $output .= theme_render_template(drupal_get_path('module', 'bazar_theme').'/inc/block--bazar-theme--contact-form.tpl.php', null);
-//            $output .= "<div>contact form block from module</div>";
+            $output .= theme_render_template(drupal_get_path('module', 'bazar_theme').'/inc/block--bazar-theme--contact-form.tpl.php', array());
+            break;
+        case 'inquiry_form_horizon':
+        case 'contact_form_horizon':
+            $output .= theme_render_template(drupal_get_path('module', 'bazar_theme').'/inc/block--bazar-theme--contact-form-horizontal.tpl.php', array());
             break;
 
     }
@@ -225,9 +294,12 @@ function add_to_cart_block_form($form, &$form_state, $line_item, $show_quantity 
 }
 
 function bazar_default_product($content){
-    $content_type_id = max(array_keys($content['nodes']));
-    $default_product_price = $content['nodes'][$content_type_id]['product:commerce_price'][0]['#markup'];
-    return $default_product_price;
+    if(isset($content['nodes'])){
+        $content_type_id = max(array_keys($content['nodes']));
+        $default_product_price = $content['nodes'][$content_type_id]['product:commerce_price'][0]['#markup'];
+        return $default_product_price;
+    }
+
 }
 
 function bazar_theme_preprocess_block(&$variables) {
@@ -242,21 +314,24 @@ function bazar_theme_preprocess_block(&$variables) {
 
 
 function select_product_contents($delta){
+
     $node_content = drupal_set_page_content();
-    $content_type_id = max(array_keys($node_content['nodes']));
+    if(isset($node_content['nodes'])){
+        $content_type_id = max(array_keys($node_content['nodes']));
 //    $line_item_loaded = commerce_line_item_load( $node_content['nodes'][$content_type_id]);
 
-    //retreve render array of add-to-cart form
-    $select_product_form = $node_content['nodes'][$content_type_id]['field_product'][0];
+        //retreve render array of add-to-cart form
+        $select_product_form = $node_content['nodes'][$content_type_id]['field_product'][0];
 
-    //remove buttons
+        //remove buttons
 //    unset($select_product_form['submit']);
 //    $select_product_form['submit']['#type'] = 'hidden';
 
-    //reset class for the block to our custom so that Ajax calls doesn't intereffect each other
-    $select_product_form['#attributes']['class'][1] = drupal_html_class('select_product_form');
-    return drupal_render($select_product_form);
-//    return '<div>Here comes select product widget</div>';
+        //reset class for the block to our custom so that Ajax calls doesn't intereffect each other
+        $select_product_form['#attributes']['class'][1] = drupal_html_class('select_product_form');
+        return drupal_render($select_product_form);
+    }
+
 }
 
 /**
@@ -385,18 +460,22 @@ function add_to_cart_block_contents($delta){
 
 function generate_add_to_cart_block(){
 
+
     $node_content = drupal_set_page_content();
-    $content_type_id = max(array_keys($node_content['nodes']));
+    if(isset($node_content['nodes'])){
+        $content_type_id = max(array_keys($node_content['nodes']));
 //    $line_item_loaded = commerce_line_item_load( $node_content['nodes'][$content_type_id]);
 
-    //retreve render array of add-to-cart form
-    $add_to_cart_form = $node_content['nodes'][$content_type_id]['field_product'][0];
+        //retreve render array of add-to-cart form
+        $add_to_cart_form = $node_content['nodes'][$content_type_id]['field_product'][0];
 
-    //remove attributes
-    unset($add_to_cart_form['attributes']);
-    //reset class for the block to our custom so that Ajax calls doesn't intereffect each other
-    $add_to_cart_form['#attributes']['class'][1] = drupal_html_class('bazar_add_to_cart_block_form');
-    return drupal_render($add_to_cart_form);
+        //remove attributes
+        unset($add_to_cart_form['attributes']);
+        //reset class for the block to our custom so that Ajax calls doesn't interaffect each other
+        $add_to_cart_form['#attributes']['class'][1] = drupal_html_class('bazar_add_to_cart_block_form');
+        return drupal_render($add_to_cart_form);
+    }
+
 }
 
 function bazar_theme_form_alter(&$form, &$form_state, $form_id) {
@@ -474,12 +553,48 @@ function bazar_theme_commerce_cart_attributes_refresh_alter(&$commands, $form, $
         $output_category .= '<li><a href="#" rel="tag">'.$val['taxonomy_term']->name.'</a></li>';
     }
 
+    $img_magnified_src = url('sites/default/files/'.file_uri_target($default_product->field_featured_image_magnified[LANGUAGE_NONE][0]['uri']), array('absolute'=>true));
+    $img_src = url('sites/default/files/'.file_uri_target($default_product->field_featured_image[LANGUAGE_NONE][0]['uri']), array('absolute'=>true));
+    //$image_output = '<div class="yith_magnifier_zoom_wrap">';
+    $image_output = '';
+    $image_output .= '<a itemprop="image" href="'.$img_magnified_src.'" class="yith_magnifier_zoom" rel="thumbnails">';
+    $image_output .= '<img src="'.$img_src.'" alt="" class="yit-image attachment-shop_single" width="462" height="392" />';
+    $image_output .= '</a>';
+    //$image_output .= '<div class="yith_magnifier_mousetrap" style="width: 100%; height: 100%; top: 0px; left: 0px; cursor: pointer;"></div>';
+    //$image_output .= '</div>';
+    if($default_product->field_is_on_sale[LANGUAGE_NONE][0]['taxonomy_term']->name == "True"){
+        $image_output .= '<img src="'.base_path().path_to_theme() .'/img/sale.png" alt="On sale!" class="onsale yit-image" width="71" height="68" />';
+    }
+    if($default_product->field_is_new_product[LANGUAGE_NONE][0]['taxonomy_term']->name == "True"){
+        $image_output .= '<img src="'.base_path().path_to_theme() .'/img/new-product.png" alt="New Product!" class="new-prod yit-image" width="71" height="68" />';
+    }
+    $image_output .= '<div class="thumbnails">';
+    $image_output .= '<div id="slider-prev"></div>';
+    $image_output .= '<div id="slider-next"></div>';
+    $image_output .= '</div>';
+
+    $hide_demo = '';
+    if($default_product->field_hide_demo_header[LANGUAGE_NONE][0]['taxonomy_term']->name == 'yes'){
+        $hide_demo = 'hide-demo-header';
+    }
+    $demo_output = '';
+    $demo_output .= '<div class="modal-body-demo modal-body">';
+    $demo_output .= '<iframe src="'.$default_product->field_demo_url[LANGUAGE_NONE][0]['value'].'" class="'.$hide_demo.'" height="2000" width="1400" scrolling="no" frameborder="0" seamless></iframe>';
+    $demo_output .= '</div>';
 
     $commands[] = ajax_command_replace('.product-final-price', '<span class="amount product-final-price">$'.$prod_price.'</span>');
     $commands[] = ajax_command_replace('.mobile-support', '<span class="mobile-support"><a href="#" rel="tag">'.$prod_default['mobile_support'].'</a></span>');
     $commands[] = ajax_command_replace('.prod-design-framework', '<span class="prod-design-framework"><a href="#" rel="tag">'.$prod_default['design_framework'].'</a></span>');
     $commands[] = ajax_command_replace('.prod-cat-refresh', '<ul class="unstyled prod-cat-refresh">'.$output_category.'</ul>');
     $commands[] = ajax_command_replace('.description-refresh', '<span class="description-refresh">'.$prod_default['description'].'</span>');
-//    $commands[] = ajax_command_replace('.bazar-add-to-cart-block-form', '<div>got here</div>');
+//    $commands[] = ajax_command_replace('.images', '<div class="images">'.$image_output.'</div>');
+//    $commands[] = array(
+//        'command' => 'reattach_magnifier',
+//        'data' => '',
+//    );
+//    $commands[] = ajax_command_replace('.images', '<div class="images">'.$image_output.'</div>');
+
+    $commands[] = ajax_command_replace('.images', '<div class="images">'.$image_output.'</div>');
+    $commands[] = ajax_command_replace('.modal-body-demo', $demo_output);
 
 }

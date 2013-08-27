@@ -12,45 +12,11 @@
             <!-- START CONTENT -->
             <div id="content-page" class="span9 content group">
                 <div id="post-415" class="post-415 page type-page status-publish hentry group instock">
-                    <h1><span style="font-size: 16px;"><form id="contact-form-contact-form" class="contact-form row-fluid" method="post" action="" enctype="multipart/form-data">
 
-                                <div class="usermessagea"></div>
-                                <fieldset>
+                        <span style="font-size: 16px;">
+                            <?php print render($page['contact_horizontal']); ?>
+                        </span>
 
-                                    <ul>
-
-                                        <li class="textarea-field  right with-icon span9">
-                                            <div class="input-prepend"><span class="add-on"><i class="icon-contact-text"></i></span><textarea name="yit_contact[message]" id="message-contact-form" rows="8" cols="30" class="with-icon required" placeholder="ENTER YOUR MESSAGE"></textarea></div>
-                                            <div class="msg-error"></div><div class="clear"></div>
-                                        </li>
-                                        <li class="text-field  right-margin with-icon span3">
-                                            <div class="input-prepend"><span class="add-on"><i class="icon-contact-name"></i></span><input type="text" name="yit_contact[name]" id="name-contact-form" class="with-icon required" value="" placeholder="NAME" /></div>
-                                            <div class="msg-error"></div><div class="clear"></div>
-                                        </li>
-                                        <li class="text-field  right-margin with-icon span3">
-                                            <div class="input-prepend"><span class="add-on"><i class="icon-contact-email"></i></span><input type="text" name="yit_contact[email]" id="email-contact-form" class="with-icon required email-validate" value="" placeholder="EMAIL" /></div>
-                                            <div class="msg-error"></div><div class="clear"></div>
-                                        </li>
-                                        <li class="text-field  right-margin with-icon span3">
-                                            <div class="input-prepend"><span class="add-on"><i class="icon-contact-url"></i></span><input type="text" name="yit_contact[url]" id="url-contact-form" class="with-icon" value="" placeholder="WEBSITE" /></div>
-                                            <div class="msg-error"></div><div class="clear"></div>
-                                        </li>
-                                        <li class="submit-button span9">
-                                            <input type="text" name="yit_bot" id="yit_bot" />
-                                            <input type="hidden" name="yit_action" value="sendemail" id="yit_action" />
-                                            <input type="hidden" name="yit_referer" value="http://demo.yithemes.com/bazar/contact/" />
-                                            <input type="hidden" name="id_form" value="4" />
-                                            <input type="submit" name="yit_sendemail" value="Send Message" class="sendmail alignright" />				<div class="clear"></div>			</li>
-                                    </ul>
-
-                                </fieldset>
-                                <div class="contact-form-error-messages"><div class="contact-form-error-message contact-form-error">* Insert a message</div>
-                                    <div class="contact-form-error-name contact-form-error">* Insert the name</div>
-                                    <div class="contact-form-error-email contact-form-error">* Insert a valid email</div>
-                                </div>
-                            </form>
-
-<script type="text/javascript" src="http://demo.yithemes.com/bazar/wp-content/themes/bazar/theme/assets/js/contact.js"></script></span></h1>
                 </div>
                 <!-- START MAP -->
                 <div id="map">
