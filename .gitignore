@@ -1,5 +1,8 @@
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
+.gradle/*
+sites/default/files/css/*
+sites/default/files/js/*
 
 # Ignore paths that contain user-generated content.
 #sites/*/files
