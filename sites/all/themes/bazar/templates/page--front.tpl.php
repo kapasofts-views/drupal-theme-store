@@ -1,36 +1,36 @@
-<!-- BEGIN #slider -->
-<!--<div id="slider-elastic-0" class="slider slider-elastic elastic ei-slider container" style="">-->
-<!--    <div class="ei-slider-loading">Loading</div>-->
-<!--    <ul class="ei-slider-large">-->
-<!---->
-<!---->
-<!--        <li class="first slide-1 slide align-">-->
-<!--            --><?php //print '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/Senza-titolo-2.jpg" class="attachment-full" alt="Senza-titolo-2" />';?>
-<!---->
-<!--        </li>-->
-<!---->
-<!--        <li class="slide-2 slide align-">-->
-<!--            --><?php //echo '<img width="1170" height="339" src="'.path_to_theme() .'/img/slider/42.jpg" class="attachment-full" alt="42" />';?>
-<!---->
-<!--        </li>-->
-<!---->
-<!--        <li class="last slide-3 slide align-">-->
-<!--            --><?php //echo '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/51.jpg" class="attachment-full" alt="51" />';?>
-<!---->
-<!--        </li>-->
-<!---->
-<!--    </ul><!-- ei-slider-large -->
-<!--    <ul class="ei-slider-thumbs">-->
-<!--        <li class="ei-slider-element">Current</li>-->
-<!--        --><?php //echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/Senza-titolo-2-150x59.jpg" alt=" - " /></li>';?>
-<!--        --><?php //echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/42-150x59.jpg" alt=" - " /></li>';?>
-<!--        --><?php //echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/51-150x59.jpg" alt=" - " /></li>';?>
-<!--    </ul><!-- ei-slider-thumbs -->
-<!---->
-<!--    <div class="shadow"></div>-->
-<!--</div>-->
-<!-- ei-slider -->
-<!-- END #slider -->
+ <!--BEGIN #slider-->
+<div id="slider-elastic-0" class="slider slider-elastic elastic ei-slider container" style="">
+    <div class="ei-slider-loading">Loading</div>
+    <ul class="ei-slider-large">
+
+
+        <li class="first slide-1 slide align-">
+            <?php print '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/Senza-titolo-2-ver6.jpg" class="attachment-full" alt="Senza-titolo-2" />';?>
+
+        </li>
+
+        <li class="slide-2 slide align-">
+            <?php echo '<img width="1170" height="339" src="'.path_to_theme() .'/img/slider/42-ver6.jpg" class="attachment-full" alt="42" />';?>
+
+        </li>
+
+        <li class="last slide-3 slide align-">
+            <?php echo '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/51-ver1.jpg" class="attachment-full" alt="51" />';?>
+
+        </li>
+
+    </ul><!-- ei-slider-large -->
+    <ul class="ei-slider-thumbs">
+        <li class="ei-slider-element">Current</li>
+        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/Senza-titolo-2-150x59-ver1.jpg" alt=" - " /></li>';?>
+        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/42-150x59-ver1.jpg" alt=" - " /></li>';?>
+        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/51-150x59-ver1.jpg" alt=" - " /></li>';?>
+    </ul><!-- ei-slider-thumbs -->
+
+    <div class="shadow"></div>
+</div>
+<!-- ei-slider
+ END #slider -->
 
 <script type="text/javascript">
     jQuery(document).ready(function($){
