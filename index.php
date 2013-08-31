@@ -3,7 +3,7 @@ ini_set('memory_limit', '-1');
 ini_set('max_input_time', '60');
 ini_set('max_execution_time', '60');
 
-
+ini_set('error_reporting', E_ALL & ~E_NOTICE);
 //error_reporting(E_ALL);
 //ini_set('display_errors', TRUE);
 //ini_set('display_startup_errors', TRUE);
