@@ -880,6 +880,8 @@ function bazar_preprocess_html(&$vars, $hook) {
             $bazarJsList['sitepress']['external']=false;
 
 
+//            $bazarJsButtom['yit_browser']['url']='/core/assets/js/yit/yit_browser.js';
+//            $bazarJsButtom['yit_browser']['external']=false;
             //$bazarJsButtom['wp-includes-thickbox']['url']='/js/wp-includes/thickbox.js';
             //$bazarJsButtom['wp-includes-thickbox']['external']=false;
             $bazarJsButtom['wp-includes-underscore']['url']='/js/wp-includes/underscore.min.js';
@@ -939,7 +941,9 @@ function bazar_preprocess_html(&$vars, $hook) {
             $bazarJsButtom['jquery-mousewheel']['url']='/js/jquery/jquery.mousewheel.min.js';
             $bazarJsButtom['jquery-mousewheel']['external']=false;
 
-            $bazarCssBodyTag = 'no_js responsive';
+//            $bazarCssBodyTag = 'no_js responsive';
+            $bazarCssBodyTag = 'page page-child page-template-default no_js stretched responsive';
+
             $bazarJsConfigButtom = 'var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":" ","closeImage":" "};'."\n"
                 . 'var l10n_handler = {"map_close":"[x] Close","map_open":"[x] Open"};'."\n"
                 . 'var yith_woocompare = {"nonceadd":"2ff540915e","nonceremove":"e0a22b5f3d","ajaxurl":"","actionadd":"yith-woocompare-add-product","actionremove":"yith-woocompare-remove-product","actionview":"yith-woocompare-view-table","added_label":"Added","table_title":"Product Comparison","auto_open":"yes"};'."\n"
