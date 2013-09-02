@@ -941,8 +941,8 @@ function bazar_preprocess_html(&$vars, $hook) {
             $bazarJsButtom['jquery-mousewheel']['url']='/js/jquery/jquery.mousewheel.min.js';
             $bazarJsButtom['jquery-mousewheel']['external']=false;
 
-//            $bazarCssBodyTag = 'no_js responsive';
-            $bazarCssBodyTag = 'page page-child page-template-default no_js stretched responsive';
+            $bazarCssBodyTag = 'no_js responsive';
+//            $bazarCssBodyTag = 'page page-child page-template-default no_js stretched responsive';
 
             $bazarJsConfigButtom = 'var thickboxL10n = {"next":"Next >","prev":"< Prev","image":"Image","of":"of","close":"Close","noiframes":"This feature requires inline frames. You have iframes disabled or your browser does not support them.","loadingAnimation":" ","closeImage":" "};'."\n"
                 . 'var l10n_handler = {"map_close":"[x] Close","map_open":"[x] Open"};'."\n"
