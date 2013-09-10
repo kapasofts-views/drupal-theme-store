@@ -291,6 +291,8 @@ function bazar_preprocess_html(&$vars, $hook) {
 
             //$bazarJsButtom['wp-includes-thickbox']['url']='/js/wp-includes/thickbox.js';
             //$bazarJsButtom['wp-includes-thickbox']['external']=false;
+            $bazarJsButtom['custom']['url']='/js/custom.js';
+            $bazarJsButtom['custom']['external']=false;
             $bazarJsButtom['wp-includes-underscore']['url']='/js/wp-includes/underscore.min.js';
             $bazarJsButtom['wp-includes-underscore']['external']=false;
             $bazarJsButtom['wp-includes-shortcode']['url']='/js/wp-includes/shortcode.min.js';
@@ -998,8 +1000,34 @@ function bazar_preprocess_html(&$vars, $hook) {
 //    }
 //
 //        $vars['interfaceConfig'] = $interfaceConfig;
+
+    //retrieving current page for seo content
+    $nodes_array = $vars["page"]["content"]["system_main"]["nodes"];
+    $page_seo = array();
+    if($nodes_array != null){
+        $nodeId=max(array_keys($nodes_array));
+        $currentNode = $vars["page"]["content"]["system_main"]["nodes"][$nodeId]["#node"];
+        $page_seo['title'] = $currentNode->field_title_seo[LANGUAGE_NONE][0]['value'];
+        $page_seo['desc'] = $currentNode->field_description_seo[LANGUAGE_NONE][0]['value'];
+        $page_seo['keywords'] = $currentNode->field_keywords_seo[LANGUAGE_NONE][0]['value'];
+        $vars['page_seo'] = $page_seo;
+    }else{
+        $vars['page_seo'] = initDefaultSeo();
+    }
+
+    if(empty($page_seo['title'])){
+        $vars['page_seo'] = initDefaultSeo();
+    }
+
 }
 
+function initDefaultSeo(){
+    $page_seo = array();
+    $page_seo['title'] = 'Premium Drupal Themes Templates Buy';
+    $page_seo['desc'] = 'Drupal 7 Themes Best Drupal Themes WIDE SELECTION';
+    $page_seo['keywords'] = 'drupal themes,drupal 7 themes,drupal theme,best drupal themes,premium drupal themes,drupal template,drupal 7 theme,premium drupal themes,drupal template, best drupal 7 themes, premium drupal 7 themes,best drupal theme';
+    return $page_seo;
+}
 
 function default_css_js_init(&$bazarClassList, &$bazarJsList, &$bazarJsButtom, &$bazarCssBodyTag, &$bazarJsConfigButtom){
     //            $bazarClassList['reset-bootstrap']['url']='/css/reset-bootstrap.css';
@@ -1148,14 +1176,14 @@ function bazar_preprocess_page(&$vars, $hook) {
 
         $vars['theme_hook_suggestions'][] = 'page__'. $vars['node']->type;
         switch($vars['node']->type){
-            case "property":
-//                rental_preprocess_property($vars, $hook, $propertyMap);
+            case "home":
+//                bazar_preprocess_home($vars, $hook);
                 break;
             case "template_display":
                 //rental_preprocess_template_display($vars, $hook);
                 break;
             default:
-                //rental_preprocess_template_display($vars, $hook);
+//                bazar_preprocess_home($vars, $hook);
                 break;
         }
     }
@@ -1442,7 +1470,7 @@ function bazar_breadcrumb($variables) {
 
         switch($node->type){
             case 'template_display':
-                $breadcrumb[] = l(t('Design Themes'), 'drupal-templates-for-sale');
+                $breadcrumb[] = l(t('Design Themes'), 'drupal-responsive-theme');
                 $breadcrumb[] = $node->title;
                 break;
             case 'wid':

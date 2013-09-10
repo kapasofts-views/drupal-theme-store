@@ -7,7 +7,7 @@
     <div id="post-696" class="post-696 page type-page status-publish hentry group instock">
         <div class="products-slider-wrapper">
             <div class="products-slider" data-items="3">
-                <h4>BUSINESS - CORPORATE</h4>
+                <h4>BUSINESS - CORPORATE DRUPAL THEMES</h4>
                 <?php
                 print render($page['business_designs']);
                 ?>
@@ -25,9 +25,45 @@
     <div id="post-697" class="post-697 page type-page status-publish hentry group instock">
         <div class="products-slider-wrapper">
             <div class="products-slider" data-items="3">
-                <h4>COMMERCE - RETAIL</h4>
+                <h4>COMMERCE - RETAIL DRUPAL THEMES</h4>
                 <?php
                 print render($page['commerce_designs']);
+                ?>
+                <div class="es-nav">
+                    <span class="es-nav-prev">Previous</span>
+                    <span class="es-nav-next">Next</span>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="es-carousel-clear"></div>
+    <div id="post-697" class="post-697 page type-page status-publish hentry group instock">
+        <div class="products-slider-wrapper">
+            <div class="products-slider" data-items="3">
+                <h4>ADMIN - HOSTING DRUPAL THEMES</h4>
+                <?php
+                print render($page['admin_designs']);
+                ?>
+                <div class="es-nav">
+                    <span class="es-nav-prev">Previous</span>
+                    <span class="es-nav-next">Next</span>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="es-carousel-clear"></div>
+    <div id="post-697" class="post-697 page type-page status-publish hentry group instock">
+        <div class="products-slider-wrapper">
+            <div class="products-slider" data-items="3">
+                <h4>MAGAZINE - NEWS DRUPAL THEMES</h4>
+                <?php
+                print render($page['magazine_designs']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>
@@ -43,7 +79,7 @@
     <div id="post-698" class="post-698 page type-page status-publish hentry group instock">
         <div class="products-slider-wrapper">
             <div class="products-slider" data-items="3">
-                <h4>HOTEL - BED & BREAKFAST</h4>
+                <h4>HOTEL - BED & BREAKFAST DRUPAL THEMES</h4>
                 <?php
                 print render($page['hotel_designs']);
                 ?>
@@ -62,7 +98,7 @@
     <div id="post-699" class="post-699 page type-page status-publish hentry group instock">
         <div class="products-slider-wrapper">
             <div class="products-slider" data-items="3">
-                <h4>LANDING PAGE</h4>
+                <h4>LANDING PAGE DRUPAL THEMES</h4>
                 <?php
                 print render($page['landing_designs']);
                 ?>
@@ -81,7 +117,7 @@
     <div id="post-700" class="post-700 page type-page status-publish hentry group instock">
         <div class="products-slider-wrapper">
             <div class="products-slider" data-items="3">
-                <h4>PERSONAL - CREATIVE</h4>
+                <h4>PERSONAL - CREATIVE DRUPAL THEMES</h4>
                 <?php
                 print render($page['personal_designs']);
                 ?>

@@ -1,0 +1,59 @@
+ul.products li.product.list {padding-left:293px}
+ul.products li.product.list .product-thumbnail {margin-left:-293px}
+.widget.widget_onsale li,
+.widget.widget_best_sellers li,
+.widget.widget_recent_reviews li,
+.widget.widget_recent_products li,
+.widget.widget_random_products li,
+.widget.widget_featured_products li,
+.widget.widget_top_rated_products li,
+.widget.widget_recently_viewed_products li {min-height: 80px}
+
+.widget.widget_onsale li .star-rating,
+.widget.widget_best_sellers li .star-rating,
+.widget.widget_recent_reviews li .star-rating,
+.widget.widget_recent_products li .star-rating,
+.widget.widget_random_products li .star-rating,
+.widget.widget_featured_products li .star-rating,
+.widget.widget_top_rated_products li .star-rating,
+.widget.widget_recently_viewed_products li .star-rating { margin-left: 115px}
+
+/* IE8, Portrait tablet to landscape and desktop till 1024px */
+.single-product div.images { width:50.8045977011%; }
+.single-product div.summary { width:42.6666666667%; }
+
+/* WooCommerce standard images */
+.single-product .images .thumbnails > a { width:80px !important; height:80px !important; }
+/* Slider images */
+.single-product .images .thumbnails li img { max-width:80px !important; }
+
+/* Desktop above 1200px */
+@media (min-width:1200px) {
+    .single-product div.images .yith_magnifier_zoom_wrap a img,
+    .single-product div.images > a img{ width:462px; height:392px; }
+    /* WooCommerce standard images */
+    .single-product .images .thumbnails > a { width:100px !important; height:80px !important; }
+    /* Slider images */
+    .single-product .images .thumbnails li img { max-width:100px !important; }
+}
+
+/* Desktop above 1200px */
+@media (max-width: 979px) and (min-width: 768px) {
+    /* WooCommerce standard images */
+    .single-product .images .thumbnails > a { width:63px !important; height:63px !important; }
+    /* Slider images */
+    .single-product .images .thumbnails li img { max-width:63px !important; }
+}
+
+/* Below 767px, mobiles included */
+@media (max-width: 767px) {
+    .single-product div.images,
+    .single-product div.summary { float:none;margin-left:0px !important;width:100% !important; }
+
+    .single-product div.images { margin-bottom:20px; }
+
+    /* WooCommerce standard images */
+    .single-product .images .thumbnails > a { width:65px !important; height:65px !important; }
+    /* Slider images */
+    .single-product .images .thumbnails li img { max-width:65px !important; }
+}

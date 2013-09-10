@@ -23,9 +23,13 @@ regions[personal_designs] = 'Personal Designs'
 regions[commerce_designs] = 'Commerce Designs'
 regions[landing_designs] = 'Landing Page Designs'
 regions[business_designs] = 'Business Designs'
+regions[admin_designs] = 'Admin Hosting Designs'
+regions[magazine_designs] = 'Magazine Designs'
 regions[hotelandbedbreakfast] = 'Three Hotel Designs'
 regions[personal_creative] = 'Three Personal Designs'
 regions[commerce_retail] = 'Three Commerce Designs'
+regions[admin_hosting] = 'Three Admin Hosting Designs'
+regions[magazine_news] = 'Three Magazine News Designs'
 regions[landingpage] = 'Three Landing Page Designs'
 regions[business_corporate] = 'Three Business Designs'
 regions[add_to_cart] = 'Add To Cart'
@@ -34,6 +38,8 @@ regions[cart_in_header] = 'Cart In Header'
 regions[driver_configurations] = 'Driver Configurations'
 regions[contact_horizontal] = 'Contact Form Horizontal'
 regions[product_inquiry_horizontal] = 'Inquiry Form Horizontal'
+
+
 
 ;stylesheets[all][] = css/reset-bootstrap.css
 ;stylesheets[all][] = css/language-selector.css

@@ -1,3 +1,4 @@
+
  <!--BEGIN #slider-->
 <div id="slider-elastic-0" class="slider slider-elastic elastic ei-slider container" style="">
     <div class="ei-slider-loading">Loading</div>

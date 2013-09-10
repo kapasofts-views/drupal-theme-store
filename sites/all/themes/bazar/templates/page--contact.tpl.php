@@ -29,11 +29,6 @@
                             marginwidth="0"
                             src="https://maps.google.com/?ll=46.44186,-93.36129&spn=7.783733,21.950684&t=m&z=5&amp;output=embed">
                         </iframe>
-
-                        <!--div id="map-handler" class="container"><a href="#">[x] Close</a></div>
-                        <div class="map-overlay-top"></div>
-                        <div class="map-overlay-bottom"></div>
-                        <div></div>-->
                     </div>
                 </div>
                 <!-- END MAP --><!-- START COMMENTS -->
@@ -48,10 +43,6 @@
                 <?php print render($page['sidebar_contact']); ?>
             </div>
             <!-- END SIDEBAR -->
-
-
-            <!-- START EXTRA CONTENT -->
-            <!-- END EXTRA CONTENT -->
         </div>
     </div>
 </div>

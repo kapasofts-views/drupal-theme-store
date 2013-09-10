@@ -26,14 +26,6 @@
                                 </ul>
                             </div>
                         </div>
-<!--                        <div id="nav_menu-2" class="widget-2 widget-last widget widget_nav_menu">-->
-<!--                            <div class="menu-top-menu-container">-->
-<!--                                <ul id="menu-top-menu" class="menu">-->
-<!--                                    <li id="menu-item-577" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-577"><a href="http://demo.yithemes.com/bazar/wishlist/">MY WISHLIST</a></li>-->
-<!--                                    <li id="menu-item-1747" class="yith-woocompare-open menu-item menu-item-type-custom menu-item-object-custom menu-item-1747"><a href="#">COMPARE</a></li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -45,26 +37,6 @@
         <div class="border borderstrong"></div>
     </div>
 </div>
-
-
-<script>
-    jQuery(function($){
-        var twitterSlider = function(){
-            $('#topbar .last-tweets ul').addClass('slides');
-            $('#topbar .last-tweets').flexslider({
-                animation: "fade",
-                slideshowSpeed: 5 * 1000,
-                animationDuration: 700,
-                directionNav: false,
-                controlNav: false,
-                keyboardNav: false
-            });
-        };
-        $('#topbar .last-tweets > div').bind('tweetable_loaded', function(){
-            twitterSlider();
-        });
-    });
-</script>
 
 <!-- END TOP BAR -->
 <!-- START HEADER -->
@@ -85,11 +57,6 @@
         <div id="header-cart-search">
             <div class="cart-row group">
 
-<!--                <form action="http://demo.yithemes.com/bazar/" method="get" class="search_mini">-->
-<!--                    <input type="text" name="s" id="search_mini" value="" placeholder="search for products" />-->
-<!--                    <input type="hidden" name="post_type" value="product" />-->
-<!--                    <input type="submit" value="" id="mini-search-submit" />-->
-<!--                </form>-->
                 <?php
                 if(empty($region['cart_in_header'])){
                     $bazar_cart = array();
@@ -97,27 +64,25 @@
                     $bazar_cart['total-price-cents'] = '00';
                     $bazar_cart['is-empty'] = true;
                     $bazar_cart['total-qty'] = 0;
-                    //$vars['bazar_cart'] = $bazar_cart;
                     print theme_render_template(path_to_theme().'/templates/block--cart-in-header.tpl.php', $bazar_cart);
                 }else{
                     print render($region['cart_in_header']);
                 }
 
                 ?>
-                <?php //print drupal_render(drupal_get_form('search_block_form'));?>
             </div>
         </div>	<!-- START HEADER SIDEBAR -->
         <div id="header-sidebar" class="group hidden-phone">
             <div id="text-image-2" class="widget-1 widget-first widget text-image"><div class="text-image" style="text-align:left">
-                    <?php echo '<img src="'.base_path().path_to_theme().'/img/chat-widget-img3.png" alt="" width="36" height="43" />';?>
+                    <?php echo '<img src="'.base_path().path_to_theme().'/img/premium-themes-chat.png" alt="buy web designs" width="36" height="43" />';?>
                 </div>
                 <h3>CHAT WITH US</h3>
                 <p>CURRENTLY OFFLINE</p></div><div id="text-image-3" class="widget-2 widget text-image">
                 <div class="text-image" style="text-align:left">
-                    <?php echo '<img src="'.base_path().path_to_theme().'/img/widget221.png" alt="" width="16" height="43" />';?>
+                    <?php echo '<img src="'.base_path().path_to_theme().'/img/best-website-theme.png" alt="professional design templates" width="16" height="43" />';?>
                 </div>
                 <h3>CUSTOMER SUPPORT</h3>
-                <p>+ 1 651 3346333</p></div><div id="text-2" class="widget-3 widget-last widget widget_text">
+                <p>+ 1 (442) 777-3797</p></div><div id="text-2" class="widget-3 widget-last widget widget_text">
                 <div class="textwidget">LOVE IS SHARING &nbsp; &nbsp; &nbsp;
                     <div class="socials-default-small facebook-small default">
                         <a href="# " class="socials-default-small default facebook" >facebook</a>
@@ -153,10 +118,21 @@
 
         <ul id="menu-menu" class="level-1">
             <?php
-            print '<li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['front'].' "><a href="/">HOME</a></li>';
-            print '<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['all_designs'].' "><a href="/drupal-templates-for-sale">DESIGN THEMES</a></li>';
+            print '<li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['front'].' "><a href="/best-drupal-themes">HOME</a></li>';
+            print '<li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['all_designs'].' "><a href="/drupal-responsive-theme">DESIGN THEMES</a>';
+           ?>
+            <ul class="sub-menu">
+                <li id="menu-item-694" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-children-0"><a href="/drupal-business-theme-corporate-clean">BUSINESS - CORPORATE</a></li>
+                <li id="menu-item-693" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-children-0"><a href="/drupal-commerce-themes-ecommerce-themes">COMMERCE - RETAIL</a></li>
+               <li id="menu-item-782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-children-0"><a href="/drupal-admin-theme">ADMIN - HOSTING</a></li>
+                <li id="menu-item-782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-children-0"><a href="/drupal-magazine-theme">MAGAZINE - NEWS</a></li>
+                <li id="menu-item-782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-children-0"><a href="/hotel-templates-bed-and-breakfast-website-design">HOTEL - BED & BREAKFAST</a></li>
+                <li id="menu-item-782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-children-0"><a href="/drupal-landing-page">LANDING PAGE</a></li>
+                <li id="menu-item-782" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-children-0"><a href="/drupal-blog-themes">PERSONAL - CREATIVE</a></li>
+            </ul>
+            <?php print '</li>';
             print '<li id="menu-item-579" class="menu-item menu-item-type-custom menu-item-object-custom '.$menu_selector['all_widgets'].' "><a href="/web-widgets-for-sale">WIDGETS</a></li>';
-            print '<li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['contact'].' "><a href="/contact-us">CONTACT</a></li>';
+            print '<li id="menu-item-401" class="menu-item menu-item-type-post_type menu-item-object-page '.$menu_selector['contact'].' "><a href="/drupal-themes-contact-us">CONTACT</a></li>';
 ?>
         </ul>
     </div>

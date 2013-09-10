@@ -1,3 +1,100 @@
+<header id="navbar" role="banner" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <?php if (!empty($logo)): ?>
+                <a class="logo pull-left" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>">
+                    <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+                </a>
+            <?php endif; ?>
+
+            <?php if (!empty($site_name)): ?>
+                <h1 id="site-name">
+                    <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="brand"><?php print $site_name; ?></a>
+                </h1>
+            <?php endif; ?>
+
+            <?php if (!empty($primary_nav) || !empty($secondary_nav) || !empty($page['navigation'])): ?>
+                <div class="nav-collapse collapse">
+                    <nav role="navigation">
+                        <?php if (!empty($primary_nav)): ?>
+                            <?php print render($primary_nav); ?>
+                        <?php endif; ?>
+                        <?php if (!empty($page['navigation'])): ?>
+                            <?php print render($page['navigation']); ?>
+                        <?php endif; ?>
+                        <?php if (!empty($secondary_nav)): ?>
+                            <?php print render($secondary_nav); ?>
+                        <?php endif; ?>
+                    </nav>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</header>
+
+<div class="main-container container">
+
+    <header role="banner" id="page-header">
+        <?php if (!empty($site_slogan)): ?>
+            <p class="lead"><?php print $site_slogan; ?></p>
+        <?php endif; ?>
+
+        <?php print render($page['header']); ?>
+    </header> <!-- /#header -->
+
+    <div class="row">
+
+        <?php if (!empty($page['sidebar_first'])): ?>
+            <aside class="span3" role="complementary">
+                <?php print render($page['sidebar_first']); ?>
+            </aside>  <!-- /#sidebar-first -->
+        <?php endif; ?>
+
+        <section class="<?php print _bootstrap_content_span($columns); ?>">
+            <?php if (!empty($page['highlighted'])): ?>
+                <div class="highlighted hero-unit"><?php print render($page['highlighted']); ?></div>
+            <?php endif; ?>
+            <?php if (!empty($breadcrumb)): print $breadcrumb; endif;?>
+            <a id="main-content"></a>
+            <?php print render($title_prefix); ?>
+            <?php if (!empty($title)): ?>
+                <h1 class="page-header"><?php print $title; ?></h1>
+            <?php endif; ?>
+            <?php print render($title_suffix); ?>
+            <?php print $messages; ?>
+            <?php if (!empty($tabs)): ?>
+                <?php print render($tabs); ?>
+            <?php endif; ?>
+            <?php if (!empty($page['help'])): ?>
+                <div class="well"><?php print render($page['help']); ?></div>
+            <?php endif; ?>
+            <?php if (!empty($action_links)): ?>
+                <ul class="action-links"><?php print render($action_links); ?></ul>
+            <?php endif; ?>
+            <?php print render($page['content']); ?>
+        </section>
+
+        <?php if (!empty($page['sidebar_second'])): ?>
+            <aside class="span3" role="complementary">
+                <?php print render($page['sidebar_second']); ?>
+            </aside>  <!-- /#sidebar-second -->
+        <?php endif; ?>
+
+    </div>
+    <footer class="footer container">
+        <?php print render($page['footer']); ?>
+    </footer>
+</div>
+
+
+
 <!-- BEGIN #slider -->
 <div id="slider-elastic-0" class="slider slider-elastic elastic ei-slider container" style="">
     <div class="ei-slider-loading">Loading</div>
@@ -5,26 +102,26 @@
 
 
         <li class="first slide-1 slide align-">
-            <?php print '<img width="1173" height="339" src="'. base_path().path_to_theme() .'/img/slider/Senza-titolo-2.jpg" class="attachment-full" alt="Senza-titolo-2" />';?>
+            <?php print '<img width="1173" height="339" src="'.base_path().path_to_theme() .'/img/slider/Senza-titolo-2.jpg" class="attachment-full" alt="Senza-titolo-2" />';?>
 
         </li>
 
         <li class="slide-2 slide align-">
-            <?php echo '<img width="1170" height="339" src="'. base_path().path_to_theme() .'/img/slider/42.jpg" class="attachment-full" alt="42" />';?>
+            <?php echo '<img width="1170" height="339" src="'.base_path().path_to_theme() .'/img/slider/42.jpg" class="attachment-full" alt="42" />';?>
 
         </li>
 
         <li class="last slide-3 slide align-">
-            <?php echo '<img width="1173" height="339" src="'. base_path().path_to_theme() .'/img/slider/51.jpg" class="attachment-full" alt="51" />';?>
+            <?php echo '<img width="1173" height="339" src="'.base_path().path_to_theme() .'/img/slider/51.jpg" class="attachment-full" alt="51" />';?>
 
         </li>
 
     </ul><!-- ei-slider-large -->
     <ul class="ei-slider-thumbs">
         <li class="ei-slider-element">Current</li>
-        <?php echo '<li><a href="#"> - </a><img src="'. base_path().path_to_theme() .'/img/slider/Senza-titolo-2-150x59.jpg" alt=" - " /></li>';?>
-        <?php echo '<li><a href="#"> - </a><img src="'. base_path().path_to_theme() .'/img/slider/42-150x59.jpg" alt=" - " /></li>';?>
-        <?php echo '<li><a href="#"> - </a><img src="'. base_path().path_to_theme() .'/img/slider/51-150x59.jpg" alt=" - " /></li>';?>
+        <?php echo '<li><a href="#"> - </a><img src="'.base_path().path_to_theme() .'/img/slider/Senza-titolo-2-150x59.jpg" alt=" - " /></li>';?>
+        <?php echo '<li><a href="#"> - </a><img src="'.base_path().path_to_theme() .'/img/slider/42-150x59.jpg" alt=" - " /></li>';?>
+        <?php echo '<li><a href="#"> - </a><img src="'.base_path().path_to_theme() .'/img/slider/51-150x59.jpg" alt=" - " /></li>';?>
     </ul><!-- ei-slider-thumbs -->
 
     <div class="shadow"></div>
@@ -60,8 +157,8 @@
 
 
         <div class="thumbnail-wrapper">
-            <?php print '<img src="'. base_path().path_to_theme() .'/img/bullets/sale.png" alt="On sale!" class="onsale yit-image" width="71" height="68" /><a href="http://demo.yithemes.com/bazar/shop/bag/" class="thumb">';?>
-            <?php print '<img width="254" height="203" src="'. base_path().path_to_theme() .'/img/products/bag2-254x203.jpg" class="attachment-shop_catalog wp-post-image" alt="bag2" /></a>';?>
+            <?php print '<img src="'.base_path().path_to_theme() .'/img/bullets/sale.png" alt="On sale!" class="onsale yit-image" width="71" height="68" /><a href="http://demo.yithemes.com/bazar/shop/bag/" class="thumb">';?>
+            <?php print '<img width="254" height="203" src="'.base_path().path_to_theme() .'/img/products/bag2-254x203.jpg" class="attachment-shop_catalog wp-post-image" alt="bag2" /></a>';?>
         </div>
 
 
@@ -78,7 +175,7 @@
                     <div class="yith-wcwl-add-to-wishlist">
                         <div class="yith-wcwl-add-button">
                             <a href="http://demo.yithemes.com/bazar/wp-content/themes/bazar/theme/plugins/yith_wishlist/yith-wcwl-ajax.php?action=add_to_wishlist&add_to_wishlist=552" data-product-id="552" data-product-type="simple" class="add_to_wishlist" >Wishlist</a>
-                            <?php echo '<img src="'. base_path().path_to_theme() .'/img/wpspin_light.gif" class="ajax-loading" id="add-items-ajax-loading" alt="" style="visibility:hidden" width="16" height="16" />';?>
+                            <?php echo '<img src="'.base_path().path_to_theme() .'/img/wpspin_light.gif" class="ajax-loading" id="add-items-ajax-loading" alt="" style="visibility:hidden" width="16" height="16" />';?>
                         </div>
                         <div class="yith-wcwl-wishlistaddedbrowse" style="display:none;"><span class="feedback">Product added!</span>
                             <a href="http://demo.yithemes.com/bazar/?page_id=387">View Wishlist</a>
@@ -156,7 +253,7 @@
                     <div class="yith-wcwl-add-to-wishlist">
                         <div class="yith-wcwl-add-button">
                             <a href="http://demo.yithemes.com/bazar/wp-content/themes/bazar/theme/plugins/yith_wishlist/yith-wcwl-ajax.php?action=add_to_wishlist&add_to_wishlist=550" data-product-id="550" data-product-type="simple" class="add_to_wishlist" >Wishlist</a>
-                            <?php echo '<img src="'. base_path().path_to_theme() .'/img/wpspin_light.gif" class="ajax-loading" id="add-items-ajax-loading" alt="" style="visibility:hidden" width="16" height="16" />';?>
+                            <?php echo '<img src="'.base_path().path_to_theme() .'/img/wpspin_light.gif" class="ajax-loading" id="add-items-ajax-loading" alt="" style="visibility:hidden" width="16" height="16" />';?>
                         </div>
                         <div class="yith-wcwl-wishlistaddedbrowse" style="display:none;"><span class="feedback">Product added!</span>
                             <a href="http://demo.yithemes.com/bazar/?page_id=387">View Wishlist</a>
@@ -216,7 +313,7 @@
 
         <div class="thumbnail-wrapper">
             <a href="http://demo.yithemes.com/bazar/shop/creative-shirt/" class="thumb">
-                <?php echo '<img width="254" height="203" src="'. base_path().path_to_theme() .'/img/products/221-254x203.jpg" class="attachment-shop_catalog wp-post-image" alt="22" />';?>
+                <?php echo '<img width="254" height="203" src="'.base_path().path_to_theme() .'/img/products/221-254x203.jpg" class="attachment-shop_catalog wp-post-image" alt="22" />';?>
             </a>
             <span class="out-of-stock" style="display: inline;">out of stock</span>
         </div>

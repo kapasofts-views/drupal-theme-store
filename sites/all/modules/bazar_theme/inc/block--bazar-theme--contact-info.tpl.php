@@ -3,15 +3,15 @@
         <div class="sidebar-nav">
             <ul>
                 <li>
-                    <?php echo '<img src="'.base_path().path_to_theme().'/img/address2.png" alt="Location" />';?>
+                    <?php echo '<img src="'.base_path().path_to_theme().'/img/best-drupal-themes-location.png" alt="Drupal 7 Themes Location" />';?>
                     <strong>Location:</strong> Minneapolis - Minnesota
                 </li>
                 <li>
-                    <?php echo '<img src="'.base_path().path_to_theme().'/img/phone2.png" alt="Phone" />';?>
-                    <strong>Phone:</strong> +1 651-334-6333
+                    <?php echo '<img src="'.base_path().path_to_theme().'/img/buy-drupal-7-themes-phone.png" alt="Buy Drupal Theme Phone" />';?>
+                    <strong>Phone:</strong> +1 (442) 777-3797
                 </li>
                 <li>
-                    <?php echo '<img src="'.base_path().path_to_theme().'/img/email2.png" alt="Email" />';?>
+                    <?php echo '<img src="'.base_path().path_to_theme().'/img/drupal-paid-themes-email.png" alt="Premium Drupal Themes Email" />';?>
                     <strong>Email:</strong> contact@designssquare.com
                 </li>
             </ul>

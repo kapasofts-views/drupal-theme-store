@@ -1,16 +1,14 @@
 <!-- START COPYRIGHT -->
 <div id="copyright">
-
     <div class="border borderstrong borderpadding container"></div>
     <div class="border container"></div>
     <div class="border container"></div>
     <div class="border container"></div>
-
     <div class="container">
         <div class="row">
             <div class="left span6">
                 <p>
-                    <?php echo '<img src="'.base_path().path_to_theme().'/img/bazar-logo-footer3.png" class="yit-image" width="104" height="21" /><br />';?>
+                    <?php echo '<img src="'.base_path().path_to_theme().'/img/drupal-template.png" alt="premium templates for website" class="yit-image" width="104" height="21" /><br />';?>
                     copyright 2013 - Designs Square</p>
             </div>
             <div class="right span6">
@@ -22,8 +20,7 @@
             </div>
         </div>
     </div>
-</div>
-<!-- END COPYRIGHT -->
+</div><!-- END COPYRIGHT -->
 
 
 
