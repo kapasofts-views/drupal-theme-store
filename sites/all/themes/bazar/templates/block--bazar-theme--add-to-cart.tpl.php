@@ -14,8 +14,7 @@
         <div class="buttons buttons_3 group">
             <div class="yith-wcwl-add-to-wishlist">
                 <div class="yith-wcwl-add-button">
-                    <a href="#" data-product-id="506" data-product-type="simple" class="add_to_wishlist" >Wishlist</a>
-                    <?php print '<img src="'.base_path().path_to_theme().'/img/top-drupal-themes-spin.gif" class="ajax-loading" id="add-items-ajax-loading" alt="buy drupal 7 themes spin" style="visibility:hidden" width="16" height="16" />';?>
+                    <a href="#" data-product-id="506" data-product-type="simple" class="add_to_wishlist" > <span class="add-cart-wishlist-icon"></span> Wishlist</a>
                 </div>
                 <div class="yith-wcwl-wishlistaddedbrowse" style="display:none;">
                     <span class="feedback">Product added!</span>
@@ -41,8 +40,11 @@
                     );
                 }
             </script>
-            <div class="woocommerce product compare-button"><a href="#" class="compare" data-product_id="506">Compare</a></div><a href="#" class="woo_compare_button_go hide" style="display: none;"></a>
-            <a href="#" class="yit_share share">Share</a>        </div>
+            <div class="woocommerce product compare-button">
+                <a href="#" class="compare" data-product_id="506"><span class="add-cart-compare-icon"></span>Compare</a>
+            </div>
+            <a href="#" class="yit_share share"><span class="add-cart-share-icon"></span>Share</a>
+        </div>
     </div>
 </div>
 

@@ -21,12 +21,12 @@
                 <div itemprop="description" class="product-description">
                     <a href="#packageModal" role="button" data-toggle="modal"><i id="description-info-sign" class="icon-info-sign"></i></a>
                     <?php print render($region['select_product_form']); ?>
-                    <?php print '<p><span class="posted_in">Responsive Theme:</span> <span class="mobile-support"><a href="#" rel="tag">'.$bazar_product['mobile_support'].'</a></span></p>';?>
+                    <?php print '<p><span class="posted_in">Responsive Theme:</span> <span class="mobile-support"><a href="'.$current_url.'" rel="tag">'.$bazar_product['mobile_support'].'</a></span></p>';?>
                     <?php print '<p><span class="posted_in">Design Framework:</span> <span class="prod-design-framework"><a href="#" rel="tag">'.$bazar_product['design_framework'].'</a></span></p>';?>
                     <?php
                     $output_c = '<p class="prod-category"><span class="posted_in">Category:</span><ul class="unstyled prod-cat-refresh">';
                     foreach($bazar_product['category'] as $key=>$val){
-                        $output_c .= '<li><a href="#" rel="tag">'.$val.'</a></li>';
+                        $output_c .= '<li><a href="'.$current_url.'" rel="tag">'.$val.'</a></li>';
                     }
                     $output_c .= '</ul></p>';
                     print $output_c;
@@ -40,25 +40,25 @@
                     </div>
                     <div class="modal-body-package modal-body ">
                         <div class="media">
-                            <a class="pull-left" href="#">
-                                <?php print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/drupal-7-themes-basic.png" alt="drupal theme">';?>
-                            </a>
+                            <div class="pull-left media-img-alter basic-label">
+                                <?php //print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/drupal-7-themes-basic.png" alt="drupal theme">';?>
+                            </div>
                             <div class="media-body">
                                 The minimal to get it started. Each page is its own content type, however. It my require some html, coding skills to customize per your needs. Perfect for developers focusing on building features!
                             </div>
                         </div>
                         <div class="media">
-                            <a class="pull-left" href="#">
-                                <?php print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/drupal-responsive-theme-plus.png" alt="drupal mobile theme" >';?>
-                            </a>
-                            <div class="media-body">
+                            <div class="pull-left media-img-alter plus-label">
+                                <?php //print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/drupal-responsive-theme-plus.png" alt="drupal mobile theme" >';?>
+                            </div>
+                            <div class="media-body ">
                                 All design elements are contained in their own container configurable and editable by anyone, so you don't need any html or coding skills. Do your self package!
                             </div>
                         </div>
                         <div class="media">
-                            <a class="pull-left" href="#">
-                                <?php print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/drupal-premium-themes-ultimate.png" alt="professional design templates">';?>
-                            </a>
+                            <div class="pull-left media-img-alter ultimate-label">
+                                <?php //print '<img class="media-object" src="'.base_path().path_to_theme() .'/img/drupal-premium-themes-ultimate.png" alt="professional design templates">';?>
+                            </div>
                             <div class="media-body">
                                 Sit back, relax and sip your favorite drink, while we install, configure and customize your site as you wish(up to 3h of our time). The smart choice package!
                             </div>
@@ -115,9 +115,16 @@
           ?>
       </div>
       <div class="panel entry-content" id="tab-reviews">
-          <div id="reviews"><div id="comments"><h2>Reviews</h2><p class="noreviews">There are no reviews yet, would you like to <a href="#" class="inline show_review_form">submit yours</a>?</p></div><div id="review_form_wrapper"><div id="review_form">								<div id="respond">
+          <div id="reviews">
+              <div id="comments">
+                  <h2>Reviews</h2>
+                  <p class="noreviews">There are no reviews yet, would you like to
+                      <?php echo '<a href="'.$current_url.'" class="inline show_review_form">submit yours</a>?';?>
+                  </p>
+              </div>
+              <div id="review_form_wrapper"><div id="review_form">								<div id="respond">
                          <?php print '<h3 id="reply-title">Be the first to review &ldquo;'.$product_title.'&rdquo; <small>';?>
-                                  <a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display:none;">
+                                 <?php echo '<a rel="nofollow" id="cancel-comment-reply-link" href="'.$current_url.'" style="display:none;">';?>
                                       Cancel reply
                                   </a>
                               </small>

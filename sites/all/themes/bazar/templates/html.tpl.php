@@ -45,35 +45,12 @@
     <?php print '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="'. base_path().path_to_theme() .'/img/professional-design-templates.png">';?>
     <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
     <?php print '<link rel="apple-touch-icon-precomposed" href="'. base_path().path_to_theme() .'/img/premium-templates-for-website.png" />';?>
-    <?php print "<link rel='stylesheet' id='reset-bootstrap'  href='".base_path().path_to_theme()."/css/reset-bootstrap.css' type='text/css' media='all' />"."\n";?>
-    <?php print $styles; ?>
 
-    <style>.yith-wcwl-add-button > a.button.alt{background:#4F4F4F;color:#FFFFFF;border-color:#4F4F4F;}.wishlist_table a.add_to_cart.button.alt{background:#4F4F4F;color:#FFFFFF;border-color:#4F4F4F;}.wishlist_table{background:#FFFFFF;color:#676868;border-color:#676868;}</style>
-   <?php foreach($bazarCssClass as $key => $css_class){
-        if($css_class['external']){
-            print "<link rel='stylesheet' id='".$key."'  href='".$css_class['url']."' type='text/css' media='all' />"."\n";
-        }else{
-            print "<link rel='stylesheet' id='".$key."'  href='". base_path().path_to_theme() .$css_class['url']."' type='text/css' media='all' />"."\n";
-        }
-    }?>
+    <link rel='stylesheet' id='google-fonts-css'  href='http://fonts.googleapis.com/css?family=Playfair+Display%7COpen+Sans+Condensed%3A300%7COpen+Sans%7CShadows+Into+Light%7COswald%7CPlay%7CMuli%7CArbutus+Slab%7CAbel&#038;ver=3.5.2' type='text/css' media='all' />
+    <?php print $styles; ?>
     <?php print $scripts; ?>
 
-    <?php foreach($bazarJsClass as $key => $js_class){
-        if($js_class['external']){
-            echo '<script src="'.$js_class['url'].'"></script>';
-        }else{
-            echo '<script src="'.base_path().path_to_theme().$js_class['url'].'"></script>'."\n";
-        }
-    }?>
     <script type="text/javascript">var icl_lang = 'en';var icl_home = 'http://designssquare.com/';</script>
-    <style type="text/css">
-        body { background-color: #ffffff; }
-    </style>
-    <style type="text/css">
-        .blog-big .meta, .blog-small .meta { background-color: #ffffff; }
-    </style>
-     <?php   print "<link rel='stylesheet' href='". base_path().path_to_theme() ."/css/from-header.css' type='text/css' media='all' />"."\n";?>
-    <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
 </head>
 <?php echo '<body class="'.$bazarCssBodyTag.'">'; ?>
 
@@ -98,21 +75,8 @@
   </div>
   <!-- END BG SHADOW -->
 
-  <?php echo '<script src="'.base_path().path_to_theme().'/js/from-footer.js"></script>'."\n";?>
-  <?php print "<link rel='stylesheet' id='yith_wcan_admin-css'  href='". base_path().path_to_theme() ."/css/frontend.css' type='text/css' media='all' />";?>
-
-  <script type='text/javascript'>
-     /* <![CDATA[ */
-        <?php echo "\n".$bazarJsConfigButtom."\n";?>
-    /* ]]> */
-   </script>
-
 <?php foreach($bazarJsButtom as $key => $js_class){
-    if($js_class['external']){
-        echo '<script src="'.$js_class['url'].'"></script>';
-    }else{
         echo '<script src="'.base_path().path_to_theme().$js_class['url'].'"></script>'."\n";
-    }
 }?>
 </body>
 </html>

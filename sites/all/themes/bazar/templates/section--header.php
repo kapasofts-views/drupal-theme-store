@@ -73,16 +73,21 @@
             </div>
         </div>	<!-- START HEADER SIDEBAR -->
         <div id="header-sidebar" class="group hidden-phone">
-            <div id="text-image-2" class="widget-1 widget-first widget text-image"><div class="text-image" style="text-align:left">
-                    <?php echo '<img src="'.base_path().path_to_theme().'/img/premium-themes-chat.png" alt="buy web designs" width="36" height="43" />';?>
+            <div id="text-image-2" class="widget-1 widget-first widget text-image">
+                <div class="text-image head-chat-icon" style="text-align:left">
+                    <?php //echo '<img src="'.base_path().path_to_theme().'/img/premium-themes-chat.png" alt="buy web designs" width="36" height="43" />';?>
                 </div>
                 <h3>CHAT WITH US</h3>
-                <p>CURRENTLY OFFLINE</p></div><div id="text-image-3" class="widget-2 widget text-image">
-                <div class="text-image" style="text-align:left">
-                    <?php echo '<img src="'.base_path().path_to_theme().'/img/best-website-theme.png" alt="professional design templates" width="16" height="43" />';?>
+                <p>CURRENTLY OFFLINE</p>
+            </div>
+            <div id="text-image-3" class="widget-2 widget text-image">
+                <div class="text-image head-phone-icon" style="text-align:left">
+                    <?php //echo '<img src="'.base_path().path_to_theme().'/img/best-website-theme.png" alt="professional design templates" width="16" height="43" />';?>
                 </div>
                 <h3>CUSTOMER SUPPORT</h3>
-                <p>+ 1 (442) 777-3797</p></div><div id="text-2" class="widget-3 widget-last widget widget_text">
+                <p>+ 1 (442) 777-3797</p>
+            </div>
+            <div id="text-2" class="widget-3 widget-last widget widget_text">
                 <div class="textwidget">LOVE IS SHARING &nbsp; &nbsp; &nbsp;
                     <div class="socials-default-small facebook-small default">
                         <a href="# " class="socials-default-small default facebook" >facebook</a>

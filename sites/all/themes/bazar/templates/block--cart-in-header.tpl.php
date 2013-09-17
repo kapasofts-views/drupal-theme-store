@@ -2,6 +2,7 @@
 <div class="cart-row group">
 
     <div class="cart-items cart-items-icon">
+        <span class="header-cart-icon"></span>
         <?php print '<span class="cart-items-number">'.$bazar_cart['total-qty'].'</span>';?>
         <span class="cart-items-label">Items</span>
     </div>

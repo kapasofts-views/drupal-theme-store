@@ -5,8 +5,6 @@ core = 7.x
 base theme = bootstrap
 engine = phptemplate
 
-settings[bazar_background] = RED
-
 regions[navigation]     = 'Navigation'
 regions[header]         = 'Top Bar'
 regions[highlighted]    = 'Highlighted'
@@ -40,19 +38,19 @@ regions[contact_horizontal] = 'Contact Form Horizontal'
 regions[product_inquiry_horizontal] = 'Inquiry Form Horizontal'
 
 
-
-;stylesheets[all][] = css/reset-bootstrap.css
 ;stylesheets[all][] = css/language-selector.css
 ;stylesheets[all][] = css/style.css
-;stylesheets[all][] = css/thickbox/thickbox.css
+;stylesheets[all][] = css/woocommerce/style2.css
+;stylesheets[all][] = css/cache/style-28.css
 ;stylesheets[all][] = css/custom.css
-
+;stylesheets[all][] = css/cache/custom-28.css
+;stylesheets[all][] = css/from-header.css
 
 ; JS
-;scripts[] = js/google-tracking.js
-;scripts[] = js/lib/underscore-min.js
-;scripts[] = js/lib/backbone-min.js
-;scripts[] = js/lib/bootstrap.min.js
+scripts[] = js/colorpicker.js
+;scripts[] = js/jquery/jquery.commonlibraries.js
+;scripts[] = js/jquery/jquery.layout.js
+;scripts[] = js/responsive.js
 ;scripts[] = js/lib/handlebars.runtime.js
 ;scripts[] = js/comment-reply.min.js
 ;scripts[] = js/jquery/jquery.cookie.js
