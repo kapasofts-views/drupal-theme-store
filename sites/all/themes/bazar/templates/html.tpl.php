@@ -78,5 +78,7 @@
 <?php foreach($bazarJsButtom as $key => $js_class){
         echo '<script src="'.base_path().path_to_theme().$js_class['url'].'"></script>'."\n";
 }?>
+
+<?php print render($region['driver_configurations_buttom']);  ?>
 </body>
 </html>

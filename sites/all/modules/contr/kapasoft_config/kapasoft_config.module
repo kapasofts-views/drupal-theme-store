@@ -85,8 +85,12 @@ function kapasoft_config_block_info(){
 
     $blocks['driver_configurations'] = array(
         'info' => t('KapaSoft: Driver Configurations'),//admin ui block name
+        'cache' => DRUPAL_NO_CACHE,
     );
-
+    $blocks['driver_configurations_bottom'] = array(
+        'info' => t('KapaSoft: Driver Configurations Bottom'),//admin ui block name
+        'cache' => DRUPAL_NO_CACHE,
+    );
     return $blocks;
 }
 
@@ -99,6 +103,12 @@ function kapasoft_config_block_view($delta = ''){
               );
             break;
             }
+        case 'driver_configurations_bottom':{
+            $block['content'] = array(
+                '#markup' => driver_config_content($delta),
+            );
+            break;
+        }
 
         }
     return $block;
@@ -118,10 +128,15 @@ function driver_config_content($delta){
             $drive_config .=  '}';
             $drive_config .=  '};';
             $drive_config .=  '}());';
+            $drive_config .=  "var socket = ''";
             $drive_config .=  '</script>'."\n";
+            break;
+        }
+        case 'driver_configurations_bottom':{
             $drive_config .=  '<script src="http://'.variable_get('kapasoft_driver_url').':'.variable_get('kapasoft_driver_port').'/socket.io/socket.io.js"></script>'."\n";
-            $drive_config .=  '<script>var socket = io.connect(MIN_CONFIG.getDriverUrl());</script>'."\n";
-
+            $drive_config .=  "<script>jQuery( document ).ready(function($) {"."\n";
+            $drive_config .=  "socket = io.connect(MIN_CONFIG.getDriverUrl(),{'connect timeout': 1000});"."\n";
+            $drive_config .=  "});</script>"."\n";
             break;
         }
     }

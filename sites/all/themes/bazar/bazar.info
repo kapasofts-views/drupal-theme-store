@@ -34,6 +34,7 @@ regions[add_to_cart] = 'Add To Cart'
 regions[select_product_form] = 'Select Product Form'
 regions[cart_in_header] = 'Cart In Header'
 regions[driver_configurations] = 'Driver Configurations'
+regions[driver_configurations_buttom] = 'Driver Configurations Bottom'
 regions[contact_horizontal] = 'Contact Form Horizontal'
 regions[product_inquiry_horizontal] = 'Inquiry Form Horizontal'
 
