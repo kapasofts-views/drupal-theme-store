@@ -174,7 +174,7 @@ task jsInquiryCenter(dependsOn: 'jsFeatureBase', type: com.eriwen.gradle.js.task
 
 
 /*********CSS TASKS **********/
-task cssDisplay( type: com.eriwen.gradle.js.tasks.CombineJsTask) {
+task cssDisplay( type: com.eriwen.gradle.js.tasks.CombineJsTask) << {
    source = [
                           "${themeDir}/css/yith_magnifier.css",
                           "${themeDir}/css/assets-frontend.css",
@@ -192,8 +192,7 @@ task cssDisplayAll(dependsOn: 'cssDisplay', type: com.eriwen.gradle.js.tasks.Com
 }
 
 
-
-task cssDefault( type: com.eriwen.gradle.js.tasks.CombineJsTask) {
+task cssDefault( type: com.eriwen.gradle.js.tasks.CombineJsTask) << {
    source = [
                           "${themeDir}/css/language-selector.css",
                           "${themeDir}/css/style.css",
@@ -210,7 +209,7 @@ cssDisplayAll.dependsOn cssDefault
 
 
 /**********AGRIGATE TASKS************/
-task featureRelease() {
+task featureRelease() << {
     dependsOn jsContactSide
     dependsOn jsContactCenter
     dependsOn jsInquiryCenter
@@ -252,11 +251,11 @@ def themeDirSlash = 'sites/all/themes/bazar/'
 def imgDestDir = 'sites/all/themes/bazar/img-dest'
 def imgDestDir2 = 'sprite/all-imgs'
 
- task cleanScrapedImgs(type: Delete) {
+ task cleanScrapedImgs(type: Delete) << {
  	delete imgDestDir
  }
 
-task scrapImgs(){
+task scrapImgs() << {
    def contents = new File( "${cssDir}/default.css" ).getText( 'UTF-8')
 
    def list = contents.findAll(/background:[\s]?url\((?!data:image)[^\)]*\)/){ match ->
@@ -305,38 +304,98 @@ task scrapImgs(){
         }
 }
 
-task copyImgs(){
-     def pathList = [
-         themeDirSlash + 'img/icons2/nav-arrow-down.png',
-         themeDirSlash + 'img/icons2/socials-small/socials-small.png',
-         themeDirSlash + 'img/glyphicons-halflings.png',
-         themeDirSlash + 'img/templates/comments/images/author.png',
-         themeDirSlash + 'img/templates/comments/images/email.png',
-         themeDirSlash + 'img/templates/comments/images/comment.png',
-         themeDirSlash + 'css/images/loop-zoom.png',
-         themeDirSlash + 'css/images/menu-arrow.png',
-         themeDirSlash + 'css/images/price-icon.png',
-         themeDirSlash + 'img/assets/images/elastislider_nav.png',
-         themeDirSlash + 'css/images/loop-share.png',
-         themeDirSlash + 'css/images/loop-eye.png',
-         themeDirSlash + 'css/images/loop-heart.png',
-         themeDirSlash + 'img/assets/images/slider-arrow-testimonial.png',
-         themeDirSlash + 'img/drupal-paid-themes-email.png',
-         themeDirSlash + 'img/buy-drupal-7-themes-phone.png',
-         themeDirSlash + 'img/best-drupal-themes-location.png',
-         themeDirSlash + 'css/woocommerce/images/header-cart.png'
-     ]
+task copySpriteImgs() << {
+      def pathList = [
+          themeDirSlash + 'img/icons2/nav-arrow-down.png',
+          themeDirSlash + 'img/icons2/socials-small/socials-small.png',
+          themeDirSlash + 'img/glyphicons-halflings.png',
+          themeDirSlash + 'img/templates/comments/images/author.png',
+          themeDirSlash + 'img/templates/comments/images/email.png',
+          themeDirSlash + 'img/templates/comments/images/comment.png',
+          themeDirSlash + 'css/images/loop-zoom.png',
+          themeDirSlash + 'css/images/menu-arrow.png',
+          themeDirSlash + 'css/images/price-icon.png',
+          themeDirSlash + 'img/assets/images/elastislider_nav.png',
+          themeDirSlash + 'css/images/loop-share.png',
+          themeDirSlash + 'css/images/loop-eye.png',
+          themeDirSlash + 'css/images/loop-heart.png',
+          themeDirSlash + 'img/assets/images/slider-arrow-testimonial.png',
+          themeDirSlash + 'img/drupal-paid-themes-email.png',
+          themeDirSlash + 'img/buy-drupal-7-themes-phone.png',
+          themeDirSlash + 'img/best-drupal-themes-location.png',
+          themeDirSlash + 'css/woocommerce/images/header-cart.png'
+      ]
 
-     print 'Begin copying into dest dir - ' + imgDestDir2 + '\n'
-         print '*************\n'
-         FileCollection collection = files(pathList)
-         copy {
-                   from collection
-                   into imgDestDir2
-                   rename({
-                     print "copying file " + it + '...\n'
-                    new Date().time + "_" + it
-                   })
-             }
-}
+      print 'Begin copying into dest dir - ' + imgDestDir2 + '\n'
+          print '*************\n'
+          FileCollection collection = files(pathList)
+          copy {
+                    from collection
+                    into imgDestDir2
+                    rename({
+                      print "copying file " + it + '...\n'
+                     new Date().time + "_" + it
+                    })
+              }
+ }
+
+
+ def smushDir = 'smush/imgs/default'
+ def sitesDir = 'sites/'
+
+ task copySmushImgs() << {
+      def pathList = [
+      //slider
+          themeDirSlash + 'img/slider/top-drupal-themes.jpg',
+          themeDirSlash + 'img/slider/buy-drupal-theme.jpg',
+          themeDirSlash + 'img/slider/paid-drupal-themes.jpg',
+          themeDirSlash + 'img/slider/best-drupal-theme.jpg',
+          themeDirSlash + 'img/slider/drupal-themes.jpg',
+          themeDirSlash + 'img/slider/premium-drupal-7-themes.jpg',
+      //news themes
+          sitesDir + 'default/files/drupal-7-magazine-themes-462x392.jpg',
+          sitesDir + 'default/files/drupal-7-news-theme-462x392.jpg',
+          sitesDir + 'default/files/drupal-newspaper-themes-462x392.jpg',
+      //admin
+          sitesDir + 'default/files/best-drupal-hosting-theme-462x392.jpg',
+          sitesDir + 'default/files/drupal-hosting-admin-theme-462x392.jpg',
+          sitesDir + 'default/files/drupal-admin-theme-462x391.jpg',
+      //hotel
+          sitesDir + 'default/files/website-templates-for-hotels-462x392soho.jpg',
+          sitesDir + 'default/files/bed-and-breakfast-website-design-462x392.jpg',
+          sitesDir + 'default/files/bed-and-breakfast-themes-462x392min.jpg',
+      //landing
+          sitesDir + 'default/files/drupal-mobile-theme.jpg',
+          sitesDir + 'default/files/responsive-one-page-drupal-theme-462x392-featured.jpg',
+          sitesDir + 'default/files/one-page-drupal-theme-462x392_0.jpg',
+      //commerce
+          sitesDir + 'default/files/drupal-commerce-responsive-theme-462x392.jpg',
+          sitesDir + 'default/files/drupal-themes-for-ecommerce-462x392.jpg',
+          sitesDir + 'default/files/drupal-7-ecommerce-themes-462x392.jpg',
+      //personal creative
+          sitesDir + 'default/files/content-management-system-website-templates-462x392.jpg',
+          sitesDir + 'default/files/premium-drupal-7-themes-462x392.jpg',
+          sitesDir + 'default/files/drupal-blog-theme-462x392.jpg',
+      //business
+          sitesDir + 'default/files/drupal-business-themes-462x392.jpg',
+          sitesDir + 'default/files/drupal-corporate-clean-462x392.jpg',
+          sitesDir + 'default/files/drupal-business-theme-462x392-featured.jpg',
+      //widgets
+          sitesDir + 'default/files/photo-gallery-462x392-featured.jpg',
+          sitesDir + 'default/files/podcast-462x392-featured.jpg',
+          sitesDir + 'default/files/tablo-462x392-featured.jpg'
+      ]
+
+      print 'Begin copying into dest dir - ' + smushDir + '\n'
+          print '*************\n'
+          FileCollection collection = files(pathList)
+          copy {
+                    from collection
+                    into smushDir
+                    rename({
+                      print "copying file " + it + '...\n'
+                     //new Date().time + "_" + it
+                    })
+              }
+ }
 
