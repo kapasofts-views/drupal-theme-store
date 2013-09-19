@@ -3,6 +3,7 @@ sites/*/settings*.php
 .gradle/*
 sites/default/files/css/*
 sites/default/files/js/*
+sites/default/files/cdn/*
 
 # Ignore paths that contain user-generated content.
 #sites/*/files
