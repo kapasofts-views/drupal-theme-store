@@ -88,6 +88,7 @@ function initDefaultSeo(){
 }
 
 function bazar_preprocess_page(&$vars, $hook) {
+    $vars['styles'] = drupal_get_css();
     $var['bazar_background'] = theme_get_setting('bazar_background');
     if (isset($vars['node'])) {
         $default_product = commerce_product_reference_default_product($vars['node']->field_product);

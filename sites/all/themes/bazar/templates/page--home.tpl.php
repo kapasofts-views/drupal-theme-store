@@ -6,26 +6,26 @@
 
 
         <li class="first slide-1 slide align-">
-            <?php print '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/paid-drupal-themes.jpg" class="attachment-full" alt="drupal paid themes" />';?>
+            <?php print '<img width="1173" height="339" src="'.base_path().path_to_theme() .'/img/slider/paid-drupal-themes.jpg" class="attachment-full" alt="drupal paid themes" />';?>
 
         </li>
 
         <li class="slide-2 slide align-">
-            <?php echo '<img width="1170" height="339" src="'.path_to_theme() .'/img/slider/buy-drupal-theme.jpg" class="attachment-full" alt="buy drupal template" />';?>
+            <?php echo '<img width="1170" height="339" src="'.base_path().path_to_theme() .'/img/slider/buy-drupal-theme.jpg" class="attachment-full" alt="buy drupal template" />';?>
 
         </li>
 
         <li class="last slide-3 slide align-">
-            <?php echo '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/top-drupal-themes.jpg" class="attachment-full" alt="premium drupal themes" />';?>
+            <?php echo '<img width="1173" height="339" src="'.base_path().path_to_theme() .'/img/slider/top-drupal-themes.jpg" class="attachment-full" alt="premium drupal themes" />';?>
 
         </li>
 
     </ul>
     <ul class="ei-slider-thumbs">
         <li class="ei-slider-element">Current</li>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/premium-drupal-7-themes.jpg" alt="top drupal themes" /></li>';?>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/best-drupal-theme.jpg" alt="premium drupal themes" /></li>';?>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/drupal-themes.jpg" alt="best drupal themes" /></li>';?>
+        <?php echo '<li><a href="#"> - </a><img src="'.base_path().path_to_theme() .'/img/slider/premium-drupal-7-themes.jpg" alt="top drupal themes" /></li>';?>
+        <?php echo '<li><a href="#"> - </a><img src="'.base_path().path_to_theme() .'/img/slider/best-drupal-theme.jpg" alt="premium drupal themes" /></li>';?>
+        <?php echo '<li><a href="#"> - </a><img src="'.base_path().path_to_theme() .'/img/slider/drupal-themes.jpg" alt="best drupal themes" /></li>';?>
     </ul>
 
     <div class="shadow"></div>
