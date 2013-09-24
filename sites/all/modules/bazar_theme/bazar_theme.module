@@ -10,6 +10,7 @@ function bazar_theme_block_info(){
 
     $blocks['add_to_cart'] = array(
         'info' => t('Bazar Theme: Add to Cart Block'),//admin ui block name
+        'cache' => DRUPAL_NO_CACHE,
     );
     $blocks['select_product'] = array(
         'info' => t('Bazar Theme: Select Product'),//admin ui block name

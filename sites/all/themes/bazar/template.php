@@ -89,15 +89,39 @@ function initDefaultSeo(){
 
 function bazar_preprocess_page(&$vars, $hook) {
     $vars['styles'] = drupal_get_css();
+    $conversion_code = '';
     $var['bazar_background'] = theme_get_setting('bazar_background');
     if (isset($vars['node'])) {
         $default_product = commerce_product_reference_default_product($vars['node']->field_product);
         $vars['default_product'] = commerce_product_load($default_product[0]['product_id']);
 
         $vars['theme_hook_suggestions'][] = 'page__'. $vars['node']->type;
-
         $vars['current_url'] = $_GET['q'];
+    }else{
+        $url =  $_GET['q'];
+        if(preg_match("/complete/", $url) || preg_match("/checkout/", $url)){
+            $conversion_code = '<script type="text/javascript">'."\n";
+            $conversion_code .= '/* <![CDATA[ */'."\n";
+            $conversion_code .= 'var google_conversion_id = 980840353;'."\n";
+            $conversion_code .= 'var google_conversion_language = "en";'."\n";
+            $conversion_code .= 'var google_conversion_format = "3";'."\n";
+            $conversion_code .= 'var google_conversion_color = "ffffff";'."\n";
+            $conversion_code .= 'var google_conversion_label = "8vHHCPex7QUQod_Z0wM";'."\n";
+            $conversion_code .= 'var google_conversion_value = 25;'."\n";
+            $conversion_code .= 'var google_remarketing_only = false;'."\n";
+            $conversion_code .= '/* ]]> */'."\n";
+            $conversion_code .= '</script>'."\n";
+            $conversion_code .= '<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>'."\n";
+            $conversion_code .= '<noscript>'."\n";
+            $conversion_code .= '<div style="display:inline;">'."\n";
+            $conversion_code .= '<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/980840353/?value=25&amp;label=8vHHCPex7QUQod_Z0wM&amp;guid=ON&amp;script=0"/>'."\n";
+            $conversion_code .= '</div>'."\n";
+            $conversion_code .= '</noscript>'."\n";
+        }
+
     }
+    $vars['conversion_code'] = $conversion_code;
+
 }
 
 function bazar_commerce_cart_empty_block() {

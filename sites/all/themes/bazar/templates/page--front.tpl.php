@@ -3,8 +3,6 @@
 <div id="slider-elastic-0" class="slider slider-elastic elastic ei-slider container" style="">
     <div class="ei-slider-loading">Loading</div>
     <ul class="ei-slider-large">
-
-
         <li class="first slide-1 slide align-">
             <?php print '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/Senza-titolo-2-ver6.jpg" class="attachment-full" alt="Senza-titolo-2" />';?>
 
