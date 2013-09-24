@@ -99,7 +99,7 @@ function bazar_preprocess_page(&$vars, $hook) {
         $vars['current_url'] = $_GET['q'];
     }else{
         $url =  $_GET['q'];
-        if(preg_match("/complete/", $url) || preg_match("/checkout/", $url)){
+        if(preg_match("/complete/", $url) && preg_match("/checkout/", $url)){
             $conversion_code = '<script type="text/javascript">'."\n";
             $conversion_code .= '/* <![CDATA[ */'."\n";
             $conversion_code .= 'var google_conversion_id = 980840353;'."\n";
