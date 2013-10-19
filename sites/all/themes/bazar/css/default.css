@@ -3850,36 +3850,8 @@ ul.products li.last {
 .list-or-grid a.list-view:hover, .list-or-grid a.list-view.active {
     background-position:bottom right;
 }
-a.button, button.button, input.button, #respond input#submit, #content input.button, input.woo_compare_button_go {
-    /*
-    font-size: 100%;
-    margin: 0;
-    line-height: 1em;
-    cursor: pointer;
-    position: relative;
-    font-family: inherit;
-    text-decoration: none;
-    overflow: visible;
-    padding: 6px 10px;
-    text-decoration: none;
-    font-weight: bold;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    left: auto;
-    text-shadow: 0 1px 0 #ffffff;
-    color: #5e5e5e;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.8);
-    border: 1px solid #c7c0c7;
-    background: #f7f6f7;
-    background: -webkit-gradient(linear,left top,left bottom,from(#f7f6f7), to(#dfdbdf));
-    background: -webkit-linear-gradient(#f7f6f7,#dfdbdf);
-    background: -moz-linear-gradient(center top,#f7f6f7 0%,#dfdbdf 100%);
-    background: -moz-gradient(center top,#f7f6f7 0%,#dfdbdf 100%);
-    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.075), inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.1);
-    -moz-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.075), inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.1);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.075), inset 0 1px 0 rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.1)
-    */
+a.button, button.button, input.button, #respond input#submit,
+#content input.button, input.woo_compare_button_go {
     color: #fff;
     background-color: #4f4f4f;
     padding: 5px 20px;
@@ -7223,4 +7195,8 @@ a.yit_share.share,
 }
 .sidebar .home-widget.contact-info ul li, .sidebar .widget.contact-info ul li{
     padding: 8px 0px;
+}
+
+div.form-item-commerce-payment-payment-method{
+    display:none;
 }

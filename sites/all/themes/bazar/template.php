@@ -308,6 +308,8 @@ function bazar_breadcrumb($variables) {
 }
 
 function bazar_button($variables) {
+    $url =  $_GET['q'];
+
     $element = $variables['element'];
     $label = $element['#value'];
     element_set_attributes($element, array('id', 'name', 'value', 'type'));
@@ -317,10 +319,13 @@ function bazar_button($variables) {
         $element['#attributes']['class'][] = 'form-button-disabled';
     }
 
-    unset($element['#attributes']['class']);
-    $element['#attributes']['class'][] = 'single_add_to_cart_button';
-    $element['#attributes']['class'][] = 'button';
-    $element['#attributes']['class'][] = 'alt';
+    if(!preg_match("/review/", $url) && !preg_match("/checkout/", $url)){
+        unset($element['#attributes']['class']);
+        $element['#attributes']['class'][] = 'alt';
+        $element['#attributes']['class'][] = 'button';
+        $element['#attributes']['class'][] = 'single_add_to_cart_button';
+    }
+
     // Prepare input whitelist - added to ensure ajax functions don't break
     $whitelist = _bazar_element_whitelist();
 
@@ -330,6 +335,7 @@ function bazar_button($variables) {
     else {
         return '<button' . drupal_attributes($element['#attributes']) . '>'. $label ."</button>\n"; // This line break adds inherent margin between multiple buttons
     }
+
 }
 
 /**
