@@ -92,9 +92,10 @@ function bazar_preprocess_page(&$vars, $hook) {
     $conversion_code = '';
     $var['bazar_background'] = theme_get_setting('bazar_background');
     if (isset($vars['node'])) {
-        $default_product = commerce_product_reference_default_product($vars['node']->field_product);
-        $vars['default_product'] = commerce_product_load($default_product[0]['product_id']);
-
+        if(isset($vars['node']->field_product)){
+            $default_product = commerce_product_reference_default_product($vars['node']->field_product);
+            $vars['default_product'] = commerce_product_load($default_product[0]['product_id']);
+        }
         $vars['theme_hook_suggestions'][] = 'page__'. $vars['node']->type;
         $vars['current_url'] = $_GET['q'];
     }else{
