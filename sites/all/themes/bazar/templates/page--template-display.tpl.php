@@ -12,6 +12,7 @@
     <!-- START CONTENT -->
 <div id="content-shop" class="span9 content group">
       <?php print $messages; ?>
+      <?php print render($page['page_headline']); ?>
       <?php print render($page['content']); ?>
 </div><!-- END CONTENT-->
     <?php if (!empty($page['sidebar_second'])): ?>

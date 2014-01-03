@@ -12,7 +12,8 @@
             <div class="products-slider" data-items="3">
                 <h4>MAGAZINE - NEWS DRUPAL THEMES</h4>
                 <?php
-                print render($page['magazine_designs']);
+//                print render($page['magazine_designs']);
+                print render($page['row_one']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>

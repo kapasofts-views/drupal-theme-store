@@ -1,8 +1,4 @@
 
-<!--<script type="text/javascript">-->
-<!--    var yith_wcwl_plugin_ajax_web_url = 'http://demo.yithemes.com/bazar/wp-admin/admin-ajax.php';-->
-<!--    var login_redirect_url= 'http://demo.yithemes.com/bazar/wp-login.php?redirect_to=%2Fbazar%2Fshop%2Fwalking-shoes%2F';-->
-<!--</script>-->
 
 
 <div id="page-meta" class="group margin-top">
@@ -16,9 +12,7 @@
 
             </div></div></div>
 </div>
-<!-- END PAGE META -->
-<!--<div class="main-container container">-->
-<!--  <div class="row">-->
+
 
 <div id="primary" class="sidebar-right">
 <div class="container group">

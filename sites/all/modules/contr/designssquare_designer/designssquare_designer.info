@@ -1,0 +1,8 @@
+name = DesignsSquare Designer
+description = All related to DesignsSquare designers
+core = 7.x
+version = 7.x-0.1-dev
+package = Kapasoft.com
+files[] = designssquare_designer.module
+;dependencies = module1
+;configure = admin/config/kapasoft/manage

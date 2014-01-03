@@ -3,6 +3,7 @@ description = module for bazar theme
 core = 7.x
 version = 7.x-0.1-dev
 engine = phptemplate
+package = Kapasoft.com
 ;configure = admin/config/bazar/manage
 
 

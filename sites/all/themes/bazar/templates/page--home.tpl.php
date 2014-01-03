@@ -52,14 +52,19 @@
 <div id="primary" class="sidebar-right">
 <div class="container group">
 <div class="row">
+
 <!-- START CONTENT -->
 <div id="content-page" class="span9 content group">
-<div id="post-696" class="post-696 page type-page status-publish hentry group instock">
+    <?php print $messages; ?>
+    <?php print render($page['page_headline']); ?>
+
+    <div id="post-696" class="post-696 page type-page status-publish hentry group instock">
     <div class="products-slider-wrapper">
         <div class="products-slider" data-items="3">
             <h4>DESIGN THEMES</h4>
             <?php
-            print render($page['template_designs']);
+//            print render($page['template_designs']);
+            print render($page['row_one']);
             ?>
             <div class="es-nav">
                 <span class="es-nav-prev">Previous</span>
@@ -77,7 +82,8 @@
         <div class="products-slider" data-items="3">
             <h4>WIDGETS</h4>
             <?php
-            print render($page['widgets']);
+//            print render($page['widgets']);
+              print render($page['row_two']);
             ?>
             <div class="es-nav">
                 <span class="es-nav-prev">Previous</span>

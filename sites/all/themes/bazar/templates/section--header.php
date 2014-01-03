@@ -5,11 +5,10 @@
             <div class="span12">
                 <div id="topbar-left"></div>
                 <div id="topbar-right">
-
-                    <div class="topbar_login widget ">
-                        <a href="/user">Login <span> / </span> Register</a></div>
-
-
+                    <?php if($header_tapi['is_authenticated']) : ?>
+                        <?php print '<div class="widget"><a href="/' . $header_tapi['profile']['url'] . '">' . $header_tapi['profile']['text'] . '</a></div>';?>
+                    <?php endif; ?>
+                    <?php print '<div class="widget"><a href="/' . $header_tapi['login']['url'] . '">' . $header_tapi['login']['text'] . '</a></div>';?>
                     <div class="hide-topbar " style="display: inline;">
                         <div id="icl_lang_sel_widget" class="widget-1 widget-first widget icl_languages_selector"><div id="lang_sel"  >
                                 <ul>
@@ -18,7 +17,8 @@
                                         <ul>
                                             <li class="icl-it">
                                                 <a rel="alternate" hreflang="it" href="#">
-                                                    Spanish                    </a>
+                                                    Spanish
+                                                </a>
                                             </li>
                                         </ul>
 

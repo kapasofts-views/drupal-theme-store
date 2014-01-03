@@ -143,24 +143,6 @@
                                   </a>
                               </small>
                           </h3>
-                          <form action="http://demo.yithemes.com/bazar/wp-comments-post.php" method="post" id="commentform">
-                              <div class="row">																				<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30" aria-required="true" /></p>
-                                  <p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30" aria-required="true" /></p>
-                                  <p class="comment-form-rating"><label for="rating">Rating</label><select name="rating" id="rating">
-                                          <option value="">Rate&hellip;</option>
-                                          <option value="5">Perfect</option>
-                                          <option value="4">Good</option>
-                                          <option value="3">Average</option>
-                                          <option value="2">Not that bad</option>
-                                          <option value="1">Very Poor</option>
-                                      </select></p><p class="comment-form-comment"><label for="comment">Your Review</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true" placeholder="YOUR REVIEW"></textarea></p><input type="hidden" id="_n" name="_n" value="911326a9dd" /><input type="hidden" name="_wp_http_referer" value="/bazar/shop/walking-shoes/" />												<p class="form-submit">
-                                      <input name="submit" type="submit" id="submit" value="Submit Review" />
-                                      <input type='hidden' name='comment_post_ID' value='506' id='comment_post_ID' />
-                                      <input type='hidden' name='comment_parent' id='comment_parent' value='0' />
-                                  </p>
-                              </div>
-                              <input type="hidden" name="icl_comment_language" value="en" />
-                          </form>
                       </div><!-- #respond -->
                   </div></div><div class="clear"></div></div>
       </div>

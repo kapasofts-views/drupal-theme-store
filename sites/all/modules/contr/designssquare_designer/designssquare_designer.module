@@ -1,0 +1,247 @@
+<?php
+
+function designssquare_designer_preprocess_page(&$vars, $hook){
+    switch(arg(0)){
+        case 'designer-reports':
+            $vars['basic_tapi'] = array(
+                'title' => "DESIGNER'S REPORT",
+                'slogan' => 'WE CARE FOR DESIGNERS',
+                'body' => $vars['content'],
+                );
+            break;
+    }
+
+    //display disclaimer for themes without partnerhsip
+    if ((arg(0) == 'node') && is_numeric(arg(1)) && ($node = node_load(arg(1)))) {
+        $type = $node->type;
+
+        //retrieve current product
+        switch($type){
+            case 'template_display':
+                _add_disclaimer($vars, $node, 'design_disclaimer_product');
+                break;
+        }
+    }
+
+    if(arg(0) == 'checkout' && arg(2) == 'complete'){
+        //completed the checkout
+        $node = _retrieve_node_from_order(arg(1));
+        _add_disclaimer($vars, $node, 'design_disclaimer_checkout');
+    }
+
+}
+
+function _add_disclaimer(&$vars, $node, $disclaimer_type){
+    //retrieve partnership
+    $partnership_field = field_get_items('node', $node, 'field_designer_partnership');
+    $has_partnership = field_view_value('node', $node, 'field_designer_partnership', $partnership_field[0]);
+    if(!empty($has_partnership['#title']) || $has_partnership['#title'] == 'No' ){
+        $block = block_load('designssquare_designer', $disclaimer_type);
+        $renderable_block =  _block_get_renderable_array(_block_render_blocks(array($block)));
+        $vars['page']['page_headline']['product_design_disclaimer'] = $renderable_block;
+    }
+}
+
+
+/*********Blocks*******/
+function designssquare_designer_block_info(){
+    $blocks = array();
+
+    $blocks['design_disclaimer_general'] = array(
+        'info' => t('DesignsSquare.com: General Design Disclaimer'),//admin ui block name
+    );
+
+    $blocks['design_disclaimer_product'] = array(
+        'info' => t('DesignsSquare.com: Product Design Disclaimer'),//admin ui block name
+    );
+
+    $blocks['design_disclaimer_checkout'] = array(
+        'info' => t('DesignsSquare.com: Product Design Disclaimer after Checkout'),//admin ui block name
+    );
+    return $blocks;
+}
+
+function designssquare_designer_block_view($delta = ''){
+    $blocks = array();
+    switch($delta){
+        case 'design_disclaimer_general':{
+            $blocks['subject'] = t('');
+            $blocks['content'] = theme_render_template(drupal_get_path('module', 'designssquare_designer').'/inc/block--design-disclaimer.tpl.php', _config_general_disclaimer());
+            break;
+        }
+        case 'design_disclaimer_product':{
+            $blocks['subject'] = t('');
+            $blocks['content'] = theme_render_template(drupal_get_path('module', 'designssquare_designer').'/inc/block--design-disclaimer.tpl.php', _config_product_disclaimer());
+            break;
+        }
+
+        case 'design_disclaimer_checkout':{
+            $blocks['subject'] = t('');
+            $blocks['content'] = theme_render_template(drupal_get_path('module', 'designssquare_designer').'/inc/block--design-disclaimer.tpl.php', _config_checkout_disclaimer());
+            break;
+        }
+    }
+    return $blocks;
+}
+
+
+function _config_general_disclaimer(){
+    return array(
+        'content' => variable_get('general_disclaimer_content', 'Some themes may require a separate license from a Designer. In that circumstance, you will be informed'),
+        'link_url' => variable_get('general_disclaimer_link_url', '#'),
+        'link_text' => variable_get('general_disclaimer_link_text', '...read more'),
+    );
+}
+
+function _config_checkout_disclaimer(){
+    return array(
+        'content' => variable_get('checkout_disclaimer_content', 'Thank You. Please, email copy of the design at contact@kapasoft.com. After we receive it, the theme is going to be emailed to you. If we do not receive the copy of design in 72h, the sale is going to be canceled and the money refunded. The design copy can be purchased '),
+        'link_url' => _get_product_design_purchase_url(),
+        'link_text' => 'here',
+    );
+}
+
+function _config_product_disclaimer(){
+    return array(
+        'content' => variable_get('product_disclaimer_content', 'This theme incorporates a design that requires separate license. Before we are able to deliver this theme to you, we will need to receive a copy of the design that you can purchase '),
+        'link_url' => _get_product_design_purchase_url(),
+        'link_text' => 'here',
+    );
+}
+
+function _get_product_design_purchase_url(){
+    //retrieve current node from cache
+    $content = drupal_set_page_content();
+    //inform we are not handling the display, just reading current page data
+    static $main_content_display = FALSE;
+
+    //$content is different either in admin or user mode
+    if(isset($content['nodes'])){
+        //user mode
+        $node_id = array_filter(array_keys($content['nodes']), 'is_numeric');
+        $node = $content['nodes'][$node_id[0]]['#node'];
+    }elseif(isset($content['#node'])){
+        //admin mode
+        $node = $content['#node'];
+    }elseif(isset($content['#action'])){
+        //last page of the checkout
+        $action_path_array = explode('/', $content['#action']);
+        $node = _retrieve_node_from_order($action_path_array[2]);
+    }
+
+    if(isset($node)){
+        $design_url_field = field_get_items('node', $node, 'field_design_url');
+        $design_url_value = render(field_view_value('node', $node, 'field_design_url', $design_url_field[0]));
+    }else{
+        $design_url_value='#';
+    }
+
+    return $design_url_value;
+}
+/*helper to retrieve node instance of type 'template_display' with parameter of order number*/
+function _retrieve_node_from_order($order_id){
+    $order = commerce_order_load($order_id);
+    $line_item = commerce_line_item_load($order->commerce_line_items['und'][0]['line_item_id']);
+    $node_id_array = explode('/', ($line_item->commerce_display_path['und'][0]['value']));
+    $node = node_load($node_id_array[1]);
+    return $node;
+}
+
+function designssquare_designer_block_configure($delta='') {
+    $form = array();
+
+    switch($delta) {
+        case 'design_disclaimer_general' :
+            $form['general_disclaimer_content'] = array(
+                '#type' => 'textarea',
+                '#rows' => '3',
+                '#title' => t('Content of Designer General Disclaimer'),
+                '#default_value' => variable_get('general_disclaimer_content', 'Some themes may require a separate license from a Designer. In that circumstance, you will be informed'),
+            );
+            $form['general_disclaimer_link_url'] = array(
+                '#type' => 'textfield',
+                '#prefix' => t('Url for link'),
+                '#default_value' => variable_get('general_disclaimer_link_url', '#'),
+            );
+            $form['general_disclaimer_link_text'] = array(
+                '#type' => 'textfield',
+                '#prefix' => t('Link text'),
+                '#default_value' => variable_get('general_disclaimer_link_text', '...read more'),
+            );
+            break;
+        case 'design_disclaimer_product' :
+            $form['product_disclaimer_content'] = array(
+                '#type' => 'textarea',
+                '#rows' => '3',
+                '#title' => t('Content of Designer Product Disclaimer'),
+                '#default_value' => variable_get('product_disclaimer_content', 'This theme incorporates a design that requires separate license. Before we are able to deliver this theme to you, we will need to receive a copy of the design that you can purchase '),
+            );
+            break;
+        case 'design_disclaimer_checkout' :
+            $form['checkout_disclaimer_content'] = array(
+                '#type' => 'textarea',
+                '#rows' => '3',
+                '#title' => t('Content of Designer Checkout Disclaimer'),
+                '#default_value' => variable_get('checkout_disclaimer_content', 'some text comes here'),
+            );
+            break;
+
+    }
+    return $form;
+}
+
+function designssquare_designer_block_save($delta = '', $edit = array()) {
+    switch($delta) {
+        case 'design_disclaimer_general' :
+            variable_set('general_disclaimer_content', $edit['general_disclaimer_content']);
+            variable_set('general_disclaimer_link_url', $edit['general_disclaimer_link_url']);
+            variable_set('general_disclaimer_link_text', $edit['general_disclaimer_link_text']);
+            break;
+        case 'design_disclaimer_product' :
+            variable_set('product_disclaimer_content', $edit['product_disclaimer_content']);
+            break;
+        case 'design_disclaimer_checkout' :
+            variable_set('checkout_disclaimer_content', $edit['checkout_disclaimer_content']);
+            break;
+    }
+}
+
+/*********Designer Reports********/
+//filter product reports per current designer
+function designssquare_designer_views_post_execute(&$view) {
+    global $user;
+    if($view->name == 'commerce_reports_products' && $view->current_display == 'designer_product_report' && in_array('designer', $user->roles)){
+        //designer product report view
+        $filter_results = array_filter($view->result, "_is_for_current_designer");
+        $view->result = $filter_results;
+    }
+}
+
+
+/*implement hook_theme()*/
+function designssquare_designer_theme(){
+    return array(
+        //display designer report
+        'designer_reports' => array(
+            'template' => 'node--designer-report',
+            'variables' => array(
+                'dreports_tapi' => NULL,
+//            'designer_report' => _designer_report(),
+            ),
+            'path' => path_to_theme('theme', variable_get('theme_default', NULL)).'/templates',
+        ),
+    );
+}
+
+function _designer_report(){
+    return views_embed_view('commerce_reports_products', 'designer_product_report');
+}
+
+function _is_for_current_designer($result){
+    global $user;
+    if(!empty($result->field_field_design_owner) && $result->field_field_design_owner[0]['raw']['entity']->mail == $user->mail){
+        return true;
+    }else{
+        return false;
+    }
+}

@@ -9,7 +9,8 @@
             <div class="products-slider" data-items="3">
                 <h4>BUSINESS - CORPORATE DRUPAL THEMES</h4>
                 <?php
-                print render($page['business_designs']);
+//                print render($page['business_designs']);
+                print render($page['row_one']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>
@@ -27,7 +28,8 @@
             <div class="products-slider" data-items="3">
                 <h4>COMMERCE - RETAIL DRUPAL THEMES</h4>
                 <?php
-                print render($page['commerce_designs']);
+//                print render($page['commerce_designs']);
+                print render($page['row_two']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>
@@ -45,7 +47,8 @@
             <div class="products-slider" data-items="3">
                 <h4>ADMIN - HOSTING DRUPAL THEMES</h4>
                 <?php
-                print render($page['admin_designs']);
+//                print render($page['admin_designs']);
+                print render($page['row_three']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>
@@ -63,7 +66,8 @@
             <div class="products-slider" data-items="3">
                 <h4>MAGAZINE - NEWS DRUPAL THEMES</h4>
                 <?php
-                print render($page['magazine_designs']);
+//                print render($page['magazine_designs']);
+                print render($page['row_four']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>
@@ -81,7 +85,8 @@
             <div class="products-slider" data-items="3">
                 <h4>HOTEL - BED & BREAKFAST DRUPAL THEMES</h4>
                 <?php
-                print render($page['hotel_designs']);
+//                print render($page['hotel_designs']);
+                print render($page['row_five']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>
@@ -100,7 +105,8 @@
             <div class="products-slider" data-items="3">
                 <h4>LANDING PAGE DRUPAL THEMES</h4>
                 <?php
-                print render($page['landing_designs']);
+//                print render($page['landing_designs']);
+                print render($page['row_six']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>
@@ -119,7 +125,8 @@
             <div class="products-slider" data-items="3">
                 <h4>PERSONAL - CREATIVE DRUPAL THEMES</h4>
                 <?php
-                print render($page['personal_designs']);
+//                print render($page['personal_designs']);
+                print render($page['row_seven']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>

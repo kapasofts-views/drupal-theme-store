@@ -272,3 +272,34 @@ function bazar_theme_commerce_cart_attributes_refresh_alter(&$commands, $form, $
     $commands[] = ajax_command_replace('.modal-body-demo', $demo_output);
 
 }
+
+//filter related products not include currently displayed product
+function bazar_theme_views_post_execute(&$view) {
+    if($view->name == 'template_designs'){
+        switch($view->current_display){
+            case 'related_business_corporate':
+            case 'related_hotel':
+            case 'related_commerce_retail':
+            case 'related_landing_page':
+            case 'related_personal_creative':
+            case 'related_admin_hosting':
+            case 'related_magazine_news':
+                //related product view filtered
+                $filter_results = array_filter($view->result, "_is_not_current_product");
+                $view->result = $filter_results;
+                break;
+            default:
+        }
+
+    }
+}
+
+function _is_not_current_product($result){
+    $current_node = node_load(arg(1));
+    //if product display node id is the same of the current display template node id
+    if(!empty($current_node) && $result->nid == arg(1)){
+        return false;
+    }else{
+        return true;
+    }
+}

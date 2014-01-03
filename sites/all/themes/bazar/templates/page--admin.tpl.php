@@ -11,7 +11,8 @@
             <div class="products-slider" data-items="3">
                 <h4>ADMIN - HOSTING DRUPAL THEMES</h4>
                 <?php
-                print render($page['admin_designs']);
+//                print render($page['admin_designs']);
+                  print render($page['row_one']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>

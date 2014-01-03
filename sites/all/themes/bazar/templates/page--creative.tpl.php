@@ -9,7 +9,8 @@
             <div class="products-slider" data-items="3">
                 <h4>PERSONAL - CREATIVE DRUPAL THEMES</h4>
                 <?php
-                print render($page['personal_designs']);
+//                print render($page['personal_designs']);
+                        print render($page['row_one']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>

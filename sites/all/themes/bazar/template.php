@@ -1,10 +1,17 @@
 <?php
 function bazar_preprocess_html(&$vars, $hook) {
 
-    if(arg(0)=='node' && is_numeric(arg(1))) {
-        $node = node_load(arg(1));
-        $currentType = $node->type;
+    $type = arg(0);
+    switch($type){
+        case 'node':
+            if(is_numeric(arg(1))){
+                $node = node_load(arg(1));
+                $currentType = $node->type;
+            }
+            break;
     }
+    $vars['header_tapi'] = _header_tapi();
+
 
     $bazarJsButtom = array();
     $bazarJsButtom['js-bottom']['url']='/js/build/bottom/default.min.js';
@@ -48,6 +55,7 @@ function bazar_preprocess_html(&$vars, $hook) {
     $vars['bazarCssBodyTag'] = $bazarCssBodyTag;
     $vars['menu_selector'] = $menu_selector;
 
+    //making blocks available in html scope
     foreach (system_region_list($GLOBALS['theme']) as $region_key => $region_name) {
 
         // Get the content for each region and add it to the $region variable
@@ -90,15 +98,17 @@ function initDefaultSeo(){
 function bazar_preprocess_page(&$vars, $hook) {
     $vars['styles'] = drupal_get_css();
     $conversion_code = '';
-    $var['bazar_background'] = theme_get_setting('bazar_background');
+//    $var['bazar_background'] = theme_get_setting('bazar_background');
+    $type = $vars['node']->type;
     if (isset($vars['node'])) {
         if(isset($vars['node']->field_product)){
             $default_product = commerce_product_reference_default_product($vars['node']->field_product);
             $vars['default_product'] = commerce_product_load($default_product[0]['product_id']);
         }
-        $vars['theme_hook_suggestions'][] = 'page__'. $vars['node']->type;
+        $vars['theme_hook_suggestions'][] = 'page__'.$type;
         $vars['current_url'] = $_GET['q'];
     }else{
+        //checkout completed
         $url =  $_GET['q'];
         if(preg_match("/complete/", $url) && preg_match("/checkout/", $url)){
             $conversion_code = '<script type="text/javascript">'."\n";
@@ -118,10 +128,35 @@ function bazar_preprocess_page(&$vars, $hook) {
             $conversion_code .= '<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/980840353/?value=25&amp;label=8vHHCPex7QUQod_Z0wM&amp;guid=ON&amp;script=0"/>'."\n";
             $conversion_code .= '</div>'."\n";
             $conversion_code .= '</noscript>'."\n";
+
+            //load checkout_complete node
+            $nid_checkout = db_select('node', 'n')
+                ->fields('n', array('nid'))
+                ->fields('n', array('type'))
+                ->condition('n.type', 'checkout_complete')
+                ->execute()
+                ->fetchCol();
+
+            $checkoutNode = node_load($nid_checkout[0]);
+
+            $vars['basic_tapi'] = _checkout_tapi($checkoutNode);
         }
 
     }
     $vars['conversion_code'] = $conversion_code;
+
+    switch($type){
+        case 'page':
+            $vars['basic_tapi'] = _basic_tapi($vars['node']);
+            break;
+    }
+
+
+    switch(arg(0)){
+        case 'user':
+            $vars['user_tapi'] = _user_tapi();
+            break;
+    }
 
 }
 
@@ -214,10 +249,8 @@ function bazar_preprocess_node(&$vars , $hook) {
 
             $prod_default['demo_url'] = $default_product->field_demo_url[LANGUAGE_NONE][0]['value'];
 
-
-            $without_space_category = preg_replace('/\s|&+/','',$prod_default['category'][0]);
-            $prod_default['relative-products'] = strtolower(str_replace('-', '_', $without_space_category));
             $vars['bazar_product'] = $prod_default;
+
             break;
         }
         case 'wid':{
@@ -262,11 +295,11 @@ function bazar_preprocess_node(&$vars , $hook) {
             break;
         }
     }
-
+    $ctx_plugin = context_get_plugin('reaction', 'block');
     foreach (system_region_list($GLOBALS['theme']) as $region_key => $region_name) {
-
+        $blocks = (block_get_blocks_by_region($region_key)) ? block_get_blocks_by_region($region_key) : $ctx_plugin->block_get_blocks_by_region($region_key);
         // Get the content for each region and add it to the $region variable
-        if ($blocks = block_get_blocks_by_region($region_key)) {
+        if ($blocks) {
             $vars['region'][$region_key] = $blocks;
         }
         else {
@@ -274,6 +307,68 @@ function bazar_preprocess_node(&$vars , $hook) {
         }
     }
 }
+
+function bazar_context_load_alter(&$context) {
+    //swap the particular view of related themes
+    if ($context->name === 'template_display' && isset($context->reactions['block'])) {
+        $current_node = node_load(arg(1));
+        //retrieve product type
+        $product_instance = field_get_items('node', $current_node, 'field_product');
+        $product_id = field_view_value('node', $current_node, 'field_product', $product_instance[0])['product_id']['#value'];
+        $product = commerce_product_load($product_id);
+
+        //retrieve the category of the product
+        $tag_instance = field_get_items('commerce_product', $product, 'field_category');
+        $product_category = field_view_value('commerce_product', $product, 'field_category', $tag_instance[0])['#title'];
+
+        //assign the view containing related themes
+        switch($product_category){
+            case 'Business - Corporate':
+                $new_related_view = 'template_designs-related_business_corporate';
+                break;
+            case 'Commerce - Retail':
+                $new_related_view = 'template_designs-related_commerce_retail';
+                break;
+            case 'Admin - Hosting':
+                $new_related_view = 'template_designs-related_admin_hosting';
+                break;
+            case 'Magazine - News':
+                $new_related_view = 'template_designs-related_magazine_news';
+                break;
+            case 'Hotel and Bed & Breakfast':
+                $new_related_view = 'template_designs-related_hotel';
+                break;
+            case 'Landing Page':
+                $new_related_view = 'template_designs-related_landing_page';
+                break;
+            case 'Personal - Creative':
+                $new_related_view = 'template_designs-related_personal_creative';
+                break;
+            default:
+                $new_related_view = 'template_designs-related_business_corporate';
+        }
+
+        //retrieve views cache
+        $views_map = variable_get('views_block_hashes', array());
+        $views_map_reverse = array_flip($views_map);
+
+        //loop through all blocks and see if any assigned to the region 'related_products'
+        foreach($context->reactions['block']['blocks'] as $key => $view){
+            if($view['region'] == 'related_products'){
+                //swap the current view:block to the new view
+                unset($context->reactions['block']['blocks'][$key]);
+                $delta = (isset($views_map_reverse[$new_related_view])) ? $views_map_reverse[$new_related_view] : $new_related_view;
+                $context->reactions['block']['blocks'][$new_related_view] = array(
+                    'module' => 'views',
+                    'delta' => $delta,
+                    'region' => 'related_products',
+                    'weight' => '-10',
+                );
+            }
+        }
+    }
+}
+
 
 function bazar_breadcrumb($variables) {
     $breadcrumb = $variables['breadcrumb'];
@@ -339,6 +434,35 @@ function bazar_button($variables) {
 
 }
 
+////filter related products not include currently displayed product
+//function bazar_views_post_execute(&$view) {
+//    if($view->name == 'template_designs' && $view->current_display == 'designer_product_report'){
+//        switch($view->current_display){
+//            case 'related_business_corporate':
+//                //related product view filtered
+//                $filter_results = array_filter($view->result, "_is_not_current_product");
+//                $view->result = $filter_results;
+//                break;
+//            default:
+//        }
+//
+//    }
+//}
+//
+//function _is_not_current_product($result){
+//    $current_node = node_load(arg(1));
+//    //retrieve product type
+//    $product_instance = field_get_items('node', $current_node, 'field_product');
+//    $displayed_product_id = field_view_value('node', $current_node, 'field_product', $product_instance[0])['product_id']['#value'];
+////    $product = commerce_product_load($product_id);
+//
+//        if(!empty($current_node) && $result->product_id == $displayed_product_id){
+//            return false;
+//        }else{
+//            return true;
+//        }
+//}
+
 /**
  * Returns an array containing ids of any whitelisted drupal elements
  */
@@ -371,3 +495,90 @@ function bazar_form($variables) {
     // Anonymous DIV to satisfy XHTML compliance.
     return '<form' . drupal_attributes($element['#attributes']) . '><div>' . $element['#children'] . '</div></form>';
 }
+
+
+function _basic_tapi($node){
+    $field = field_get_items('node', $node, 'field_page_slogan');
+    $slogan = field_view_value('node', $node, 'field_page_slogan', $field[0]);
+
+    return array(
+       'title' => !empty($node->title) ? $node->title : '',
+       'body' => !empty($node->body) ? $node->body: '',
+       'slogan' => !empty($slogan) ? render($slogan) : '',
+    );
+}
+
+function _simple_tapi($vars){
+    return array(
+        'title' => !empty($vars['title']) ? $vars['title'] : '',
+        'body' => !empty($vars['body']) ? $vars['body']: '',
+        'slogan' => !empty($vars['slogan']) ? $vars['slogan'] : '',
+    );
+}
+
+
+function _checkout_tapi($node){
+    $field = field_get_items('node', $node, 'field_checkout_message');
+    $checkout_message = render(field_view_value('node', $node, 'field_checkout_message', $field[0]));
+    $basic = _basic_tapi($node);
+    $checkout_tapi = array(
+        'checkout_message' =>($checkout_message) ? $checkout_message : '',
+    );
+    return array_merge($basic, $checkout_tapi);
+}
+
+function _user_tapi(){
+global $user;
+    if($user && user_access('access commerce reports')){
+        $report = views_embed_view('commerce_reports_products', 'designer_product_report');
+        $designer_report = array(
+            '#theme' => 'designer_reports',
+            '#dreports_tapi' => array(
+                'title' => 'Designer Sales Report',
+                'report' => $report,
+            ),
+        );
+        $content = drupal_render($designer_report);
+    }
+
+
+    return array(
+        'designer_report' => (!empty($content)) ? $content : '',
+    );
+}
+
+function _header_tapi(){
+    global $user;
+    if($user->uid){
+        //authenticated user
+        $url = 'user/logout';
+        $content = 'Logout';
+        $profile_url = 'user';
+        $profile_content = $user->name;
+        $authenticated = True;
+    }else{
+        $url = 'user';
+        $content = 'Login <span> / </span> Register';
+        $authenticated = False;
+        $profile_url = '';
+        $profile_content = '';
+    }
+
+    return array(
+        'login' => array(
+            'url' => $url,
+            'text' => $content,
+        ),
+        'profile' => array(
+            'url' => $profile_url,
+            'text' => $profile_content,
+        ),
+        'is_authenticated' => $authenticated,
+    );
+}
+
+function bazar_page_alter(&$page){
+//    var_dump('here');
+}
+
+

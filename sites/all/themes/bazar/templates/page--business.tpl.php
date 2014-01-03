@@ -9,7 +9,8 @@
             <div class="products-slider" data-items="3">
                 <h4>BUSINESS - CORPORATE DRUPAL THEMES</h4>
                 <?php
-                print render($page['business_designs']);
+//                print render($page['business_designs']);
+                print render($page['row_one']);
                 ?>
                 <div class="es-nav">
                     <span class="es-nav-prev">Previous</span>

@@ -1,91 +1,32 @@
- <!--BEGIN #slider-->
-<div id="slider-elastic-0" class="slider slider-elastic elastic ei-slider container" style="">
-    <div class="ei-slider-loading">Loading</div>
-    <ul class="ei-slider-large">
 
-
-        <li class="first slide-1 slide align-">
-            <?php print '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/Senza-titolo-2-ver6.jpg" class="attachment-full" alt="Senza-titolo-2" />';?>
-
-        </li>
-
-        <li class="slide-2 slide align-">
-            <?php echo '<img width="1170" height="339" src="'.path_to_theme() .'/img/slider/42-ver6.jpg" class="attachment-full" alt="42" />';?>
-
-        </li>
-
-        <li class="last slide-3 slide align-">
-            <?php echo '<img width="1173" height="339" src="'.path_to_theme() .'/img/slider/51-ver1.jpg" class="attachment-full" alt="51" />';?>
-
-        </li>
-
-    </ul><!-- ei-slider-large -->
-    <ul class="ei-slider-thumbs">
-        <li class="ei-slider-element">Current</li>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/Senza-titolo-2-150x59-ver1.jpg" alt=" - " /></li>';?>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/42-150x59-ver1.jpg" alt=" - " /></li>';?>
-        <?php echo '<li><a href="#"> - </a><img src="'.path_to_theme() .'/img/slider/51-150x59-ver1.jpg" alt=" - " /></li>';?>
-    </ul><!-- ei-slider-thumbs -->
-
-    <div class="shadow"></div>
-</div>
-<!-- ei-slider
- END #slider -->
-
-<script type="text/javascript">
-    jQuery(document).ready(function($){
-        $('#slider-elastic-0.elastic').eislideshow({
-            easing		: 'easeOutExpo',
-            titleeasing	: 'easeOutExpo',
-            titlespeed	: 1200,
-            autoplay	: true,
-            slideshow_interval : 3000,
-            speed       : 800,
-            animation   : 'sides'
-        });
-    });
-</script>  <!-- START PRIMARY -->
+ <!-- START PRIMARY -->
 <div id="primary" class="sidebar-right">
 <div class="container group">
 <div class="row">
 <!-- START CONTENT -->
 <div id="content-page" class="span9 content group">
-<div id="post-696" class="post-696 page type-page status-publish hentry group instock">
-    <div class="products-slider-wrapper">
-        <div class="products-slider" data-items="3">
-            <h4>DESIGN THEMES</h4>
-            <?php
-            print render($page['template_designs']);
-            ?>
-            <div class="es-nav">
-                <span class="es-nav-prev">Previous</span>
-                <span class="es-nav-next">Next</span>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-</div>
+    <?php print render($title_prefix); ?>
 
-<div class="clear"></div>
-<div class="es-carousel-clear"></div>
-<div id="post-696" class="post-696 page type-page status-publish hentry group instock">
-    <div class="products-slider-wrapper">
-        <div class="products-slider" data-items="3">
-            <h4>WIDGETS</h4>
-            <?php
-            print render($page['widgets']);
-            ?>
-            <div class="es-nav">
-                <span class="es-nav-prev">Previous</span>
-                <span class="es-nav-next">Next</span>
-            </div>
-            <div class="clear"></div>
-        </div>
+    <div class="slogan">
+        <h2><?php print $basic_tapi['title']; ?></h2>
+        <?php print '<h3>'.$basic_tapi['slogan'].'</h3>';?>
+        <div class="border margin-top"></div>
+        <div class="border"></div>
+        <div class="border"></div>
     </div>
-</div>
-<div class="clear"></div>
-<div class="es-carousel-clear"></div>
-<p>&nbsp;</p>
+
+    <?php print render($title_suffix); ?>
+    <?php print $messages; ?>
+    <?php if (!empty($tabs)): ?>
+        <?php print render($tabs); ?>
+    <?php endif; ?>
+    <?php if (!empty($page['help'])): ?>
+        <div class="well"><?php print render($page['help']); ?></div>
+    <?php endif; ?>
+    <?php if (!empty($action_links)): ?>
+        <ul class="action-links"><?php print render($action_links); ?></ul>
+    <?php endif; ?>
+    <?php print render($page['content']); ?>
 </div>
 
 
