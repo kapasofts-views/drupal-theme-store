@@ -578,7 +578,12 @@ function _header_tapi(){
 }
 
 function bazar_page_alter(&$page){
-//    var_dump('here');
+    global $user;
+    if(arg(0) === 'user' && $user->uid !== 0 ){
+        //don't display spam validation field since already logged in
+        unset($page['content']['system_main']['field_prevent_spam']);
+    }
 }
+
 
 

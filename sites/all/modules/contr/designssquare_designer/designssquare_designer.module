@@ -228,7 +228,8 @@ function designssquare_designer_theme(){
                 'dreports_tapi' => NULL,
 //            'designer_report' => _designer_report(),
             ),
-            'path' => path_to_theme('theme', variable_get('theme_default', NULL)).'/templates',
+//            'path' => path_to_theme('theme', variable_get('theme_default', NULL)).'/templates',
+            'path' => path_to_theme('theme', 'bazar').'/templates',
         ),
     );
 }
