@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the builder_product_export feature.
+ */
+
+include_once 'builder_product_export.features.inc';
