@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the designssquare_product_import feature.
+ */
+
+include_once 'designssquare_product_import.features.inc';
