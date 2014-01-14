@@ -51,6 +51,7 @@ function bazar_preprocess_html(&$vars, $hook) {
     }
 
     drupal_add_css(drupal_get_path('theme',$GLOBALS['theme']) .'/css/'.$siteCss, array('group' => CSS_THEME, 'type' => 'file'));
+    drupal_add_css(drupal_get_path('theme',$GLOBALS['theme']) .'/css/designssquare-style.css', array('group' => CSS_THEME, 'type' => 'file'));
     $vars['bazarJsButtom'] = $bazarJsButtom;
     $vars['bazarCssBodyTag'] = $bazarCssBodyTag;
     $vars['menu_selector'] = $menu_selector;

@@ -1,0 +1,64 @@
+
+/*********100% Satisfaction*******/
+.group:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.widget_banner{
+    border: 1px solid #E0DFDF;
+    margin-top: 5px;
+    margin-right:10px;
+    padding-bottom: 0px;
+}
+
+.widget_banner img{
+    margin: 3px 7px 3px 10px;
+}
+
+.widget_banner2{
+    margin-top: 10px;
+    padding-bottom: 0px;
+    height: 70px;
+}
+
+.widget_banner2 img{
+    height: 70px;
+}
+
+.widget_banner h3, .widget_banner p{
+    display:block;
+    float:left;
+    clear:left;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    margin:0px;
+    line-height: 20px;
+    text-rendering: optimizelegibility;
+    text-transform:uppercase;
+}
+
+.widget_banner h3{
+    color: #373736;
+    margin-top: 10px;
+}
+.widget_banner p{
+    color: #8D8D8D;
+}
+
+.satisfaction-img{
+    text-align: right;
+    float: left;
+    margin:0;
+    padding:0px;
+}
+
+.wrap-message{
+    float:right;
+    width:280px;
+}

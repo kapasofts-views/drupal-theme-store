@@ -71,6 +71,21 @@
 
                 ?>
             </div>
+            <div class="widget_banner">
+                <div  class="satisfaction_guaranteed group">
+                    <div class="satisfaction-img">
+                        <?php echo '<img src="'.base_path().path_to_theme().'/img/satisfaction_banner/100_percent_banner_other_9.png" alt="satisfaction guaranteed"/>';?>
+                    </div>
+                    <div class='wrap-message'>
+                        <h3>Satisfaction Guarantee</h3>
+                        <p>or money back</p>
+                    </div>
+                 </div>
+            </div>
+<!--                        <div class="widget_banner2">-->
+<!--                                    --><?php //echo '<img src="'.base_path().path_to_theme().'/img/satisfaction_banner/satisfaction_guarantee.png" alt="satisfaction guaranteed"/>';?>
+<!--                        </div>-->
+
         </div>	<!-- START HEADER SIDEBAR -->
         <div id="header-sidebar" class="group hidden-phone">
             <div id="text-image-2" class="widget-1 widget-first widget text-image">
@@ -113,7 +128,8 @@
                         <a href="#" class="socials-default-small default pinterest" >pinterest</a>
                     </div>
                 </div>
-            </div>	</div>
+            </div>
+        </div>
 
     </div>
 </div>
