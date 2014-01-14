@@ -35,7 +35,7 @@ function _add_disclaimer(&$vars, $node, $disclaimer_type){
     //retrieve partnership
     $partnership_field = field_get_items('node', $node, 'field_designer_partnership');
     $has_partnership = field_view_value('node', $node, 'field_designer_partnership', $partnership_field[0]);
-    if(!empty($has_partnership['#title']) || $has_partnership['#title'] == 'No' ){
+    if(!empty($has_partnership['#title']) && $has_partnership['#title'] == 'No' ){
         $block = block_load('designssquare_designer', $disclaimer_type);
         $renderable_block =  _block_get_renderable_array(_block_render_blocks(array($block)));
         $vars['page']['page_headline']['product_design_disclaimer'] = $renderable_block;
@@ -95,7 +95,7 @@ function _config_general_disclaimer(){
 
 function _config_checkout_disclaimer(){
     return array(
-        'content' => variable_get('checkout_disclaimer_content', 'Thank You. Please, email copy of the design at contact@kapasoft.com. After we receive it, the theme is going to be emailed to you. If we do not receive the copy of design in 72h, the sale is going to be canceled and the money refunded. The design copy can be purchased '),
+        'content' => variable_get('checkout_disclaimer_content', 'Thank You. Please, email copy of the design at contact@designssquare.com. After we receive it, the theme is going to be emailed to you. If we do not receive the copy of design in 72h, the sale is going to be canceled and the money refunded. The design copy can be purchased '),
         'link_url' => _get_product_design_purchase_url(),
         'link_text' => 'here',
     );
@@ -228,6 +228,7 @@ function designssquare_designer_theme(){
                 'dreports_tapi' => NULL,
 //            'designer_report' => _designer_report(),
             ),
+            //@ToDo fix so the theme name is not hardcoded
 //            'path' => path_to_theme('theme', variable_get('theme_default', NULL)).'/templates',
             'path' => path_to_theme('theme', 'bazar').'/templates',
         ),
