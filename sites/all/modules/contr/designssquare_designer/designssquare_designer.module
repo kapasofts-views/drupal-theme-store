@@ -230,7 +230,9 @@ function designssquare_designer_theme(){
             ),
             //@ToDo fix so the theme name is not hardcoded
 //            'path' => path_to_theme('theme', variable_get('theme_default', NULL)).'/templates',
-            'path' => path_to_theme('theme', 'bazar').'/templates',
+//            'path' => path_to_theme('theme', 'bazar').'/templates',
+            'path' => base_path().drupal_get_path('theme', 'bazar').'/templates',
+
         ),
     );
 }
